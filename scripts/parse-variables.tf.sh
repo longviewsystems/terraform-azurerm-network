@@ -29,7 +29,7 @@ then
 fi
 
 #getVariableRegEx="^variable\s+\"(.*)\"\s+{$"
-getVariableRegEx="^variable\s+\"(.*)\"\s+"
+getVariableRegEx="^variable[[:space:]]*\"(.*)\"[[:space:]]*"
 
 while read p; do
 

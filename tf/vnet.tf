@@ -7,8 +7,8 @@ resource "azurerm_virtual_network" "vnet" {
   name                = var.name
   location            = var.location
   resource_group_name = var.resource_group_name
-  address_space = var.address_space
-  tags = var.tags
+  address_space       = var.address_space
+  tags                = var.tags
 }
 
 #
@@ -18,13 +18,13 @@ resource "azurerm_virtual_network" "vnet" {
 resource "azurerm_subnet" "vnet" {
   for_each = local.subnets_map
 
-  name                                                    = each.key
-  resource_group_name                                     = azurerm_virtual_network.vnet.resource_group_name
-  virtual_network_name                                    = azurerm_virtual_network.vnet.name
-  address_prefixes                                        = each.value.address_prefix
-  enforce_private_link_endpoint_network_policies          = each.value.enforce_private_link_endpoint_network_policies
-  enforce_private_link_service_network_policies           = each.value.enforce_private_link_service_network_policies
-  service_endpoints                                       = each.value.service_endpoints
+  name                                           = each.key
+  resource_group_name                            = azurerm_virtual_network.vnet.resource_group_name
+  virtual_network_name                           = azurerm_virtual_network.vnet.name
+  address_prefixes                               = each.value.address_prefix
+  enforce_private_link_endpoint_network_policies = each.value.enforce_private_link_endpoint_network_policies
+  enforce_private_link_service_network_policies  = each.value.enforce_private_link_service_network_policies
+  service_endpoints                              = each.value.service_endpoints
 
   dynamic "delegation" {
     for_each = lookup(each.value, "delegation", {}) != {} ? [1] : []
@@ -62,9 +62,9 @@ resource "azurerm_monitor_diagnostic_setting" "vnet" {
 }
 
 resource "azurerm_route_table" "vnet" {
-  name                = "${var.name}-rt"
-  location            = var.location
-  resource_group_name = var.resource_group_name
+  name                          = "${var.name}-rt"
+  location                      = var.location
+  resource_group_name           = var.resource_group_name
   disable_bgp_route_propagation = true
 
   route {
