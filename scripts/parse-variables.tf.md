@@ -3,4 +3,4 @@ Parses a variables.tf fila and returns a list of variables so you can easily mak
 
 # Usage example
 
-./scripts/parse-variables.tf.sh -i ./variables.tf
+./scripts/parse-variables.tf.sh -i ./tf/variables.tf

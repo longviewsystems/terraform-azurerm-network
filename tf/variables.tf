@@ -56,8 +56,6 @@ variable "tags" {
   default     = {}
 }
 
-variable "flowlogs_storage_account" {
-}
 
 variable "log_analytics_workspace_id" {
 }
@@ -72,10 +70,4 @@ variable "netwatcher_rg" {
 }
 
 variable "netwatcher_name" {
-}
-
-
-variable "nsg_diag_logs" {
-  description = "NSG Monitoring Category details for Azure Diagnostic setting"
-  default     = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
 }
