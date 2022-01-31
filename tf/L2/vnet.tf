@@ -38,28 +38,6 @@ resource "azurerm_subnet" "vnet" {
   }
 }
 
-resource "azurerm_monitor_diagnostic_setting" "vnet" {
-  name                       = lower("var.name-diag")
-  target_resource_id         = azurerm_virtual_network.vnet.id
-  storage_account_id         = var.flowlogs_storage_account
-  log_analytics_workspace_id = var.log_analytics_resource_id
-
-  log {
-    category = "VMProtectionAlerts"
-    enabled  = true
-
-    retention_policy {
-      enabled = false
-    }
-  }
-  metric {
-    category = "AllMetrics"
-
-    retention_policy {
-      enabled = false
-    }
-  }
-}
 
 resource "azurerm_route_table" "vnet" {
   name                          = "${var.name}-rt"
