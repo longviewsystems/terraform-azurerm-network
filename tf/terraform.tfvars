@@ -12,5 +12,5 @@ tags = {
   costCenter  = "",
   managedBy   = "Terraform",
   owner       = "",
-  TFLevel     = "L2"
+  TFLevel     = ""
 }
