@@ -9,7 +9,7 @@ import (
 
 func TestTerraformAzDoAgent(t *testing.T) {
 	options := &terraform.Options{
-		TerraformDir: "../tf/",
+		TerraformDir: "../",
 		VarFiles:     []string{"terraform.tfvars"},
 	}
 
