@@ -45,10 +45,10 @@ jobs:
         working-directory: test
         run: make azdo-agent-test
         env:
-          ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
-          ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.SUB_ID_SUB_LVS_CMP_DEV }}
+          ARM_CLIENT_ID: ${{ secrets.CLIENT_ID_SP_CLOUDMANAGEMENTPLATFORM_PIPELINE_SERVICECONNECTION_DEV }}
+          ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET_SP_CLOUDMANAGEMENTPLATFORM_PIPELINE_SERVICECONNECTION_DEV }}
+          ARM_TENANT_ID: ${{ secrets.TENANT_ID_LVS }}
 
   convert_via_pandoc:
     name: 'Convert markdown to PDF using Pandoc'
