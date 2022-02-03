@@ -5,6 +5,8 @@ This solution creates a resource group and a hub virtual network on Azure with t
 * [Azure vnet](https://registry.terraform.io/modules/Azure/network/azurerm/latest)
 * [Azure nameing](https://registry.terraform.io/modules/Azure/naming/azurerm/latest)
 
+# Notes
+Change variable values under /tf/terraform.tfvars file as needed. 
 
 # Usage
 To trigger a CI build in Github Actions, submit a PR to the dev/feature branch.
