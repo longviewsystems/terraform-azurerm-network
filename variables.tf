@@ -14,11 +14,11 @@ variable "vnet_name" {
 }
 
 variable "locations" {
-  type        = map(string)
+  type        = string
   description = "The location of the resources."
 }
 
-variable "address_space" {
+variable "address_spaces" {
   type        = list(string)
   description = "The address space that is used by the virtual network."
 }
