@@ -5,6 +5,7 @@ data "azurerm_resource_group" "vnet" {
 
 module "network" {
   source                   = "Azure/network/azurerm"
+  version                  = "3.5.0"
   vnet_name                = var.vnet_name
   resource_group_name      = data.azurerm_resource_group.vnet.name
   address_spaces           = var.address_spaces
