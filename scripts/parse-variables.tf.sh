@@ -29,8 +29,8 @@ then
 fi
 
 #getVariableRegEx="^variable\s+\"(.*)\"\s+{$"
-#getVariableRegEx="^variable[[:space:]]*\"(.*)\"[[:space:]]*"
-getVariableRegEx="^variable"
+getVariableRegEx="^variable[[:space:]]*\"(.*)\"[[:space:]]*"
+
 while read p; do
 
   #echo the line if in matches (?:variable) "(.+)"
