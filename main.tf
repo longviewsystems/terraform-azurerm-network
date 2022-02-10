@@ -2,7 +2,7 @@
 module "network" {
   source                   = "Azure/network/azurerm"
   vnet_name                = var.vnet_name
-  resource_group_name      = data.azurerm_resource_group.vnet.name
+  resource_group_name      = data.resource_group_name.vnet.name
   address_spaces           = var.address_spaces
   subnet_prefixes          = var.subnet_prefixes
   subnet_names             = var.subnet_names
