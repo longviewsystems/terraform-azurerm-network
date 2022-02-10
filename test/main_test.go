@@ -10,7 +10,7 @@ import (
 func TestTerraformAzDoAgent(t *testing.T) {
 	options := &terraform.Options{
 		TerraformDir: "../test/fixture",
-		VarFiles:     []string{"terraform.tfvars"},
+		VarFiles:     []string{"../../terraform.tfvars"},
 	}
 
 	defer terraform.Destroy(t, options)
