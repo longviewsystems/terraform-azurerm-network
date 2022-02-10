@@ -1,3 +1,6 @@
+data "azurerm_resource_group" "vnet" {
+  name = var.resource_group_name
+}
 
 module "network" {
   source                   = "Azure/network/azurerm"
