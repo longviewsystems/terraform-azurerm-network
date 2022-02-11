@@ -1,3 +1,12 @@
+# 1.0.0 (2022-02-11)
+
+
+### Features
+
+* **azboard-17727:** test for semantic release ([d62af4b](https://github.com/longviewsystems/terraform-azurerm-hub-network/commit/d62af4b5ffbb25bdec49018c8fd44d4439b9f8c2))
+* **azboard-17727:** test for semantic release ([f03557b](https://github.com/longviewsystems/terraform-azurerm-hub-network/commit/f03557bf90df5c4dc66e1a30be3aed9c6f60c8ee))
+* test for semantic release ([17b2da5](https://github.com/longviewsystems/terraform-azurerm-hub-network/commit/17b2da53608c29b351fc81a00112c1cc5c78f7ec))
+
 # [1.2.0](https://github.com/longviewsystems/terraform-azurerm-common-template/compare/1.1.2...1.2.0) (2022-01-14)
 
 
