@@ -1,6 +1,6 @@
 resource_group_name = "vnetrg"
-nsg_name  = "testnsg"
-locations = "canadacentral"
+nsg_name            = "testnsg"
+locations           = "canadacentral"
 
 tags = {
   environment = "test",
