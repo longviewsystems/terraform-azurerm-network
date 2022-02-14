@@ -1,4 +1,4 @@
-resource "network-security-group" "nsg" {
+resource "azurerm_network_security_group" "nsg" {
   name                = var.nsg_name
   location            = var.locations
   resource_group_name = data.azurerm_resource_group.vnet.name
