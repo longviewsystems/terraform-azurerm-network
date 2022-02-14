@@ -11,6 +11,7 @@ resource "azurerm_resource_group" "vnet" {
 module "network" {
   source                   = "../../" #testing root module.
   resource_group_name      = azurerm_resource_group.vnet.name
+  nsg_name                 = var.nsg_name
   vnet_name                = var.vnet_name
   locations                = var.locations
   address_spaces           = var.address_spaces

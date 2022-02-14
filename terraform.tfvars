@@ -1,5 +1,4 @@
 resource_group_name = "vnetrg"
-nsg_name            = "testnsg"
 locations           = "canadacentral"
 
 tags = {
@@ -16,3 +15,5 @@ subnet_service_endpoints = {
   "subnet2" : ["Microsoft.Storage"],
   "subnet3" : ["Microsoft.Sql"]
 }
+
+nsg_name        = "testnsg"
