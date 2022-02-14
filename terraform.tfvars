@@ -1,5 +1,5 @@
 resource_group_name = "vnetrg"
-
+nsg_name  = "testnsg"
 locations = "canadacentral"
 
 tags = {
