@@ -33,7 +33,7 @@ resource "azurerm_network_security_group" "nsg" {
 resource "azurerm_network_security_rule" "mysql" {
   name                        = "my-mysql-rule"
   resource_group_name         = data.azurerm_resource_group.vnet.name
-  network_security_group_name = var.nsg_name
+  network_security_group_name = azurerm_network_security_group.nsg.name
   priority                    = 100
   direction                   = "Inbound"
   access                      = "Allow"
@@ -51,7 +51,7 @@ resource "azurerm_network_security_rule" "mysql" {
 resource "azurerm_network_security_rule" "custom" {
   name                        = "my-custom-rule"
   resource_group_name         = data.azurerm_resource_group.vnet.name
-  network_security_group_name = var.nsg_name
+  network_security_group_name = azurerm_network_security_group.nsg.name
   priority                    = 200
   direction                   = "Inbound"
   access                      = "Allow"
