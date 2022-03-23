@@ -1,6 +1,11 @@
 # Solution Description
 This solution creates a Network Security Group attached to a subnet
 
+# References:
+* [Azure NSG](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group)
+* [Azure Vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network)
+* [Azure Subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet)
+
 
 
 # Notes
