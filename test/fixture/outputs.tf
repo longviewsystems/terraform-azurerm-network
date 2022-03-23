@@ -1,3 +1,28 @@
+/*output "vnet_id" {
+  description = "The id of the newly created vNet"
+  value       = module.network.vnet_id
+}
+
+output "vnet_name" {
+  description = "The name of the newly created vNet"
+  value       = module.network.vnet_name
+}
+
+output "vnet_location" {
+  description = "The location of the newly created vNet"
+  value       = module.network.vnet_location
+}
+
+output "vnet_address_space" {
+  description = "The address space of the newly created vNet"
+  value       = module.network.vnet_address_space
+}
+
+output "vnet_subnets" {
+  description = "The ids of subnets created inside the newly created vNet"
+  value       = module.network.vnet_subnets
+}*/
+
 output "resource_group_name" {
   description = "The name of the resource group in which resources are created"
   value       = element(coalescelist(data.azurerm_resource_group.rgrp.*.name, azurerm_resource_group.rg.*.name, [""]), 0)
@@ -43,7 +68,7 @@ output "network_security_group_ids" {
   value       = [for n in azurerm_network_security_group.nsg : n.id]
 }
 
-/*output "vnet_id" {
+output "vnet_id" {
   description = "The id of the newly created vNet"
   value       = module.network.vnet_id
 }
@@ -66,4 +91,4 @@ output "vnet_address_space" {
 output "vnet_subnets" {
   description = "The ids of subnets created inside the newly created vNet"
   value       = module.network.vnet_subnets
-}*/
+}
