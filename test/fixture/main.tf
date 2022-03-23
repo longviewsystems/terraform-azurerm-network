@@ -1,6 +1,6 @@
-resource "random_id" "rg_name" {
+/*resource "random_id" "rg_name" {
   byte_length = 8
-}
+}*/
 
 resource "azurerm_resource_group" "vnet" {
   name     = "test-${random_id.rg_name.hex}-rg"
