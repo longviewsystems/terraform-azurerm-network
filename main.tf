@@ -54,7 +54,6 @@ resource "azurerm_subnet" "snet" {
 #-----------------------------------------------
 resource "azurerm_network_security_group" "nsg" {
   for_each = var.subnets
-  //name                = lower("nsg_${each.key}_in")
   name                = each.value["nsg_name"]
   resource_group_name = local.resource_group_name
   location            = local.location
