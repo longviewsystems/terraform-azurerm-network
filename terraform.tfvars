@@ -5,7 +5,6 @@ vnet_address_space  = ["10.1.0.0/16"]
 dns_servers = ["10.1.1.24"
 ]
 
-//create_resource_group = false
 
 subnets = {
   mgnt_subnet = {
