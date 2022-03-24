@@ -33,8 +33,8 @@ variable "vnet_address_space" {
 
 variable "subnets" {
   description = "For each subnet, create an object that contain fields"
-  type        = list(any)
-  //default     = {}
+  type        = map(any)
+  default     = {}
 }
 
 
