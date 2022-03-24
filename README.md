@@ -1,6 +1,9 @@
 # Solution Description
-
-This solution creates a Network Security Group assosciated to a subnet
+This solution creates the following:
+* A vNet with associated setting like DNS servers
+* A variable number of subnets with associated setting like IP address space.
+* NSGs attached to subnets with variable rules.
+* Optionally, a Resource Group.
 
 # References
 
