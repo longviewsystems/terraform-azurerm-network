@@ -1,3 +1,4 @@
+
 output "resource_group_name" {
   description = "The name of the resource group in which resources are created"
   value       = element(coalescelist(data.azurerm_resource_group.rgrp.*.name, azurerm_resource_group.rg.*.name, [""]), 0)
@@ -42,3 +43,5 @@ output "network_security_group_ids" {
   description = "List of Network security groups and ids"
   value       = [for n in azurerm_network_security_group.nsg : n.id]
 }
+
+
