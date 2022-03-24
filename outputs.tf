@@ -34,6 +34,6 @@ output "subnet_ids" {
 }
 
 output "network_security_group_ids" {
-  description = "List of Network security groups and ids"
+  description = "List of the Network security groups and ids"
   value       = [for n in azurerm_network_security_group.nsg : n.id]
 }
