@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/longviewsystems/terraform-azurerm-network/compare/1.0.1...1.0.2) (2022-03-24)
+
+
+### Bug Fixes
+
+* rm empty lines ([c49e0cd](https://github.com/longviewsystems/terraform-azurerm-network/commit/c49e0cd3dece2071da4b548107cd0db0dd55a5b1))
+
 ## [1.0.1](https://github.com/longviewsystems/terraform-azurerm-hub-network/compare/1.0.0...1.0.1) (2022-02-11)
 
 
