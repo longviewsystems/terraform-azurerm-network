@@ -42,7 +42,7 @@ variable "tags" {
 }
 
 variable "dns_servers" {
-  description = "List of dns servers to use for virtual network"
+  description = "List of the DNS servers to use for virtual network"
   type        = list(any)
   default     = []
 }
