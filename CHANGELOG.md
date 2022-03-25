@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/1.0.2...1.1.0) (2022-03-25)
+
+
+### Features
+
+* **azboard-19225:** Added NSG Module ([63c7b07](https://github.com/longviewsystems/terraform-azurerm-network/commit/63c7b07d3606ae3df8d1ec610214cd539bd094ec))
+
 ## [1.0.2](https://github.com/longviewsystems/terraform-azurerm-network/compare/1.0.1...1.0.2) (2022-03-24)
 
 
