@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/longviewsystems/terraform-azurerm-network/compare/1.1.0...1.1.1) (2022-03-28)
+
+
+### Bug Fixes
+
+* release version ([8462b61](https://github.com/longviewsystems/terraform-azurerm-network/commit/8462b6130ebe0542b73571b814f88a9948319d16))
+
 # [1.1.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/1.0.2...1.1.0) (2022-03-25)
 
 
