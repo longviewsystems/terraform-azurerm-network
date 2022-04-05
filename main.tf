@@ -6,16 +6,19 @@ locals {
   location            = element(coalescelist(data.azurerm_resource_group.rgrp.*.location, azurerm_resource_group.rg.*.location, [""]), 0)
 }
 
+
+#TODO: Remove Resource Group creation.  Get an ID for the Resource Group.
 data "azurerm_resource_group" "rgrp" {
   count = var.create_resource_group == false ? 1 : 0
   name  = var.resource_group_name
 }
 
-
+#TODO: Remove Resource Group creation.  Get an ID for the Resource Group.
 resource "azurerm_resource_group" "rg" {
   count    = var.create_resource_group ? 1 : 0
   name     = var.resource_group_name
   location = var.location
+  #TODO: take tags directly from variable.  
   tags     = merge({ "Name" = format("%s", var.resource_group_name) }, var.tags, )
 }
 
@@ -29,6 +32,7 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = local.resource_group_name
   dns_servers         = var.dns_servers
   address_space       = var.vnet_address_space
+  #TODO: take tags directly from variable.  
   tags                = merge({ "Name" = format("%s", var.vnetwork_name) }, var.tags, )
 
 }
@@ -80,3 +84,16 @@ resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
   subnet_id                 = azurerm_subnet.snet[each.key].id
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
 }
+
+#TODO: Build a local variable (local.routeTableAssociation) to control the loop.
+# #if var.assign_routes = false, local.routeTableAssociation = null, {} - one of those.
+# otherwise, local.routeTableAssociation = map(subnet name, route table name)
+
+#TODO: Add loop to associate RouteTable ID to subnet.  RouteTable name is an input in the subnet variable block.
+# resource "azurerm_subnet_route_table_association" "default_route_table_association" {
+#   for_each = ...   # local.routeTableAssociation
+#   subnet_id      = azurerm_subnet.subnet[each.key].id
+#   Assign route table by name (the name of the route table is an input in the subnet variable block)
+#   If there's no route table name, then use the default route table.  default route table to use defined in variable (var.default_route_table_name))    
+#   route_table_id = data.azurerm_route_table[each.value].id
+# }

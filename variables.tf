@@ -30,8 +30,24 @@ variable "vnet_address_space" {
 
 variable "subnets" {
   description = "For each subnet, create an object that contain fields"
+  # TODO: remove map(any), replace with map(object ...) complex type
   type        = map(any)
   default     = {}
+}
+
+#TODO: make sure this works.
+variable "assign_routes" {
+  type = bool
+  description = "If false, no routes will be assigned."
+  default = false
+}
+
+#TODO: make sure this works.  Assumes the routeTable exists.
+variable "default_route_table_name" {
+  type        = string
+  description = "Name of the default route table."
+ 
+  #default     = null 
 }
 
 
