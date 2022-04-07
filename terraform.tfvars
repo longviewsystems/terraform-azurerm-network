@@ -25,13 +25,6 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
-    route_table_name              = "default"
-    disable_bgp_route_propagation = true
-    route_entries = [
-      # [name of the route, address prefix, next_hop_type, next_hop_in_ip_address]
-      ["default1", "10.0.2.0/24", "VnetLocal", null],
-      ["default2", "0.0.0.0/0", "Internet", null]
-    ]
   }
 
   mgnt_subnet2 = {
@@ -52,12 +45,19 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
-    route_table_name              = "custom"
-    disable_bgp_route_propagation = true
-    route_entries = [
-      # [name of the route, address prefix, next_hop_type, next_hop_in_ip_address]
-      ["custom1", "10.0.2.0/24", "VnetLocal", null],
-      ["custom2", "0.0.0.0/0", "Internet", null]
-    ]
+  }
+  mgnt_subnet3 = {
+    subnet_name                                    = "subnet03"
+    subnet_address_prefix                          = ["10.1.4.0/24"]
+    nsg_name                                       = "NSG-Subnet03"
+    service_endpoints                              = ["Microsoft.Sql"]
+    enforce_private_link_endpoint_network_policies = true
+  }
+  mgnt_subnet4 = {
+    subnet_name                                    = "custom"
+    subnet_address_prefix                          = ["10.1.5.0/24"]
+    nsg_name                                       = "NSG-Subnet04"
+    service_endpoints                              = ["Microsoft.Sql"]
+    enforce_private_link_endpoint_network_policies = true
   }
 }

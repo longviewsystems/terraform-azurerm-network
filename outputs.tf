@@ -38,16 +38,19 @@ output "network_security_group_ids" {
   value       = [for n in azurerm_network_security_group.nsg : n.id]
 }
 
-output "route_ids" {
-  description = "Returns the ID of the created route table"
-  value = [
-    for route_table in azurerm_route_table.route_table : route_table.id
-  ]
+output "subnet_object" {
+  description = "List of IDs of subnets"
+  value = {
+    for k, subnets in var.subnets : k => subnets
+  }
 }
 
-output "route_table_names" {
-  description = "Returns the name of the created route tables"
-  value = [
-    for route_table in azurerm_route_table.route_table : route_table.name
-  ]
-}
+# output "subnet_get_names" {
+#   value = {
+#     for k, subnets in var.subnets : k => subnets
+#     if lookup(subnets, "subnet_name", "subnet02") == "subnet02"
+#   }
+# }
+# output "subnet_get_names" {
+#   value = "${lookup(var.assign_custom_routes, "name")}"
+#   }

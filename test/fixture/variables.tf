@@ -39,8 +39,6 @@ variable "subnets" {
     nsg_name                                       = string
     enforce_private_link_endpoint_network_policies = string
     service_endpoints                              = list(string)
-    route_table_name                               = string
-    disable_bgp_route_propagation                  = bool
   }))
   default = {}
 }

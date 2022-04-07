@@ -48,11 +48,18 @@ variable "subnets" {
     nsg_name                                       = string
     enforce_private_link_endpoint_network_policies = string
     service_endpoints                              = list(string)
-    route_table_name                               = string
-    disable_bgp_route_propagation                  = bool
   }))
   default = {}
 }
+
+
+# variable "assign_custom_routes" {
+#   description = "Assign custom routes to particular subnet"
+#   type = map
+#   default = {
+#     "name" = "subnet01"
+# }
+# }
 
 # #TODO: make sure this works.
 # variable "assign_routes" {
@@ -61,9 +68,8 @@ variable "subnets" {
 #   default = false
 # }
 
-# #TODO: make sure this works.  Assumes the routeTable exists.
-# variable "default_route_table_name" {
-#   type        = string
-#   description = "Name of the default route table." 
-#   #default     = null 
-# }
+#TODO: make sure this works.  Assumes the routeTable exists.
+variable "default_route_table_id" {
+  type        = string
+  description = "Name of the default route table id." 
+}

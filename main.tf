@@ -77,35 +77,10 @@ resource "azurerm_network_security_group" "nsg" {
     }
   }
 }
-
 resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
   for_each                  = var.subnets
   subnet_id                 = azurerm_subnet.snet[each.key].id
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
-}
-
-resource "azurerm_route_table" "route_table" {
-  for_each                      = var.subnets
-  name                          = each.value["route_table_name"]
-  location                      = local.location
-  resource_group_name           = local.resource_group_name
-  disable_bgp_route_propagation = each.value["disable_bgp_route_propagation"]
-  tags                          = var.tags
-  dynamic "route" {
-    for_each = lookup(each.value, "route_entries", [])
-    content {
-      name                   = route.value[0] == "" ? "default" : route.value[0]
-      address_prefix         = route.value[1] == "" ? "0.0.0.0/0" : route.value[1]
-      next_hop_type          = route.value[2] == "" ? "Internet" : route.value[2]
-      next_hop_in_ip_address = contains(keys(route.value[3]), "next_hop_in_ip_address") ? route.value[3] : null
-    }
-  }
-}
-
-resource "azurerm_subnet_route_table_association" "route_table_association" {
-  for_each       = var.subnets
-  subnet_id      = azurerm_subnet.snet[each.key].id
-  route_table_id = azurerm_route_table.route_table[each.key].id
 }
 
 #TODO: Build a local variable (local.routeTableAssociation) to control the loop.
@@ -120,3 +95,21 @@ resource "azurerm_subnet_route_table_association" "route_table_association" {
 #   If there's no route table name, then use the default route table.  default route table to use defined in variable (var.default_route_table_name))    
 #   route_table_id = data.azurerm_route_table[each.value].id
 # }
+
+# resource "azurerm_subnet_route_table_association" "default_route_table_association" {
+#   for_each = {
+#     for k, subnets in var.subnets : k => subnets
+#     if lookup(subnets, "subnet_name", var.assign_custom_routes ) == var.assign_custom_routes
+#   }
+#   subnet_id      = azurerm_subnet.snet[each.key].id
+#   route_table_id = module.routes.default_route_table_id[0]
+# }
+
+resource "azurerm_subnet_route_table_association" "default_route_table_association" {
+  for_each = {
+    for k, subnets in var.subnets : k => subnets
+    if lookup(subnets, "subnet_name", "custom") != "custom"
+  }
+  subnet_id      = azurerm_subnet.snet[each.key].id
+  route_table_id = var.default_route_table_id
+}
