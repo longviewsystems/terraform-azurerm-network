@@ -113,3 +113,12 @@ resource "azurerm_subnet_route_table_association" "default_route_table_associati
   subnet_id      = azurerm_subnet.snet[each.key].id
   route_table_id = var.default_route_table_id
 }
+
+resource "azurerm_subnet_route_table_association" "custom_route_table_association" {
+  for_each = {
+    for k, subnets in var.subnets : k => subnets
+    if lookup(subnets, "subnet_name", "custom") == "custom"
+  }
+  subnet_id      = azurerm_subnet.snet[each.key].id
+  route_table_id = var.custom_route_table_id
+}

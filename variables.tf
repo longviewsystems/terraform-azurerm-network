@@ -73,3 +73,8 @@ variable "default_route_table_id" {
   type        = string
   description = "Name of the default route table id." 
 }
+
+variable "custom_route_table_id" {
+  type        = string
+  description = "Name of the custom route table id." 
+}
