@@ -38,3 +38,17 @@ output "network_security_group_ids" {
   description = "List of Network security groups and ids"
   value       = [for n in azurerm_network_security_group.nsg : n.id]
 }
+
+output "route_ids" {
+  description = "Returns the ID of the created route table"
+  value = [
+    for route_table in azurerm_route_table.route_table : route_table.id
+  ]
+}
+
+output "route_table_names" {
+  description = "Returns the name of the created route tables"
+  value = [
+    for route_table in azurerm_route_table.route_table : route_table.name
+  ]
+}

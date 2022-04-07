@@ -16,6 +16,12 @@ variable "location" {
   default     = "westeurope"
 }
 
+variable "tags" {
+  description = "A map of tags to add to all resources"
+  type        = map(string)
+  default     = {}
+}
+
 variable "vnetwork_name" {
   description = "Name of your Azure Virtual Network"
   type        = string
@@ -28,37 +34,36 @@ variable "vnet_address_space" {
   default     = ["10.0.0.0/16"]
 }
 
-variable "subnets" {
-  description = "For each subnet, create an object that contain fields"
-  # TODO: remove map(any), replace with map(object ...) complex type
-  type        = map(any)
-  default     = {}
-}
-
-#TODO: make sure this works.
-variable "assign_routes" {
-  type = bool
-  description = "If false, no routes will be assigned."
-  default = false
-}
-
-#TODO: make sure this works.  Assumes the routeTable exists.
-variable "default_route_table_name" {
-  type        = string
-  description = "Name of the default route table."
- 
-  #default     = null 
-}
-
-
-variable "tags" {
-  description = "A map of tags to add to all resources"
-  type        = map(string)
-  default     = {}
-}
-
 variable "dns_servers" {
   description = "List of DNS servers to use for virtual network"
   type        = list(any)
   default     = []
 }
+
+variable "subnets" {
+  description = "For each subnet, create an object that contain fields"
+  type = map(object({
+    subnet_name                                    = string
+    subnet_address_prefix                          = list(string)
+    nsg_name                                       = string
+    enforce_private_link_endpoint_network_policies = string
+    service_endpoints                              = list(string)
+    route_table_name                               = string
+    disable_bgp_route_propagation                  = bool
+  }))
+  default = {}
+}
+
+# #TODO: make sure this works.
+# variable "assign_routes" {
+#   type = bool
+#   description = "If false, no routes will be assigned."
+#   default = false
+# }
+
+# #TODO: make sure this works.  Assumes the routeTable exists.
+# variable "default_route_table_name" {
+#   type        = string
+#   description = "Name of the default route table." 
+#   #default     = null 
+# }

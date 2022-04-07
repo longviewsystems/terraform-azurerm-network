@@ -33,10 +33,17 @@ variable "vnet_address_space" {
 
 variable "subnets" {
   description = "For each subnet, create an object that contain fields"
-  type        = map(any)
-  default     = {}
+  type = map(object({
+    subnet_name                                    = string
+    subnet_address_prefix                          = list(string)
+    nsg_name                                       = string
+    enforce_private_link_endpoint_network_policies = string
+    service_endpoints                              = list(string)
+    route_table_name                               = string
+    disable_bgp_route_propagation                  = bool
+  }))
+  default = {}
 }
-
 
 variable "tags" {
   description = "A map of tags to add to all resources"

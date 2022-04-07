@@ -19,7 +19,7 @@ resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
   #TODO: take tags directly from variable.  
-  tags     = merge({ "Name" = format("%s", var.resource_group_name) }, var.tags, )
+  tags = var.tags
 }
 
 #-------------------------------------
@@ -33,7 +33,7 @@ resource "azurerm_virtual_network" "vnet" {
   dns_servers         = var.dns_servers
   address_space       = var.vnet_address_space
   #TODO: take tags directly from variable.  
-  tags                = merge({ "Name" = format("%s", var.vnetwork_name) }, var.tags, )
+  tags = var.tags
 
 }
 
@@ -50,18 +50,17 @@ resource "azurerm_subnet" "snet" {
   address_prefixes                               = each.value.subnet_address_prefix
   service_endpoints                              = lookup(each.value, "service_endpoints", [])
   enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", null)
-  
 }
 
 #-----------------------------------------------
 # Network security group - Default is "false"
 #-----------------------------------------------
 resource "azurerm_network_security_group" "nsg" {
-  for_each = var.subnets
+  for_each            = var.subnets
   name                = each.value["nsg_name"]
   resource_group_name = local.resource_group_name
   location            = local.location
-  tags                = merge({ "ResourceName" = lower("nsg_${each.key}_in") }, var.tags, )
+  tags                = var.tags
   dynamic "security_rule" {
     for_each = concat(lookup(each.value, "nsg_inbound_rules", []), lookup(each.value, "nsg_outbound_rules", []))
     content {
@@ -83,6 +82,30 @@ resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
   for_each                  = var.subnets
   subnet_id                 = azurerm_subnet.snet[each.key].id
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
+}
+
+resource "azurerm_route_table" "route_table" {
+  for_each                      = var.subnets
+  name                          = each.value["route_table_name"]
+  location                      = local.location
+  resource_group_name           = local.resource_group_name
+  disable_bgp_route_propagation = each.value["disable_bgp_route_propagation"]
+  tags                          = var.tags
+  dynamic "route" {
+    for_each = lookup(each.value, "route_entries", [])
+    content {
+      name                   = route.value[0] == "" ? "default" : route.value[0]
+      address_prefix         = route.value[1] == "" ? "0.0.0.0/0" : route.value[1]
+      next_hop_type          = route.value[2] == "" ? "Internet" : route.value[2]
+      next_hop_in_ip_address = contains(keys(route.value[3]), "next_hop_in_ip_address") ? route.value[3] : null
+    }
+  }
+}
+
+resource "azurerm_subnet_route_table_association" "route_table_association" {
+  for_each       = var.subnets
+  subnet_id      = azurerm_subnet.snet[each.key].id
+  route_table_id = azurerm_route_table.route_table[each.key].id
 }
 
 #TODO: Build a local variable (local.routeTableAssociation) to control the loop.

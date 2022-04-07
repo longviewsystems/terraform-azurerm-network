@@ -1,8 +1,8 @@
-resource_group_name = "pradeep-rg3"
+resource_group_name = "networking-rg"
 vnetwork_name       = "vnet-nsg-assc"
 location            = "EastUS"
 vnet_address_space  = ["10.1.0.0/16"]
-dns_servers = ["10.1.1.24"]
+dns_servers         = ["10.1.1.24"]
 
 
 subnets = {
@@ -25,6 +25,13 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
+    route_table_name              = "default"
+    disable_bgp_route_propagation = true
+    route_entries = [
+      # [name of the route, address prefix, next_hop_type, next_hop_in_ip_address]
+      ["default1", "10.0.2.0/24", "VnetLocal", null],
+      ["default2", "0.0.0.0/0", "Internet", null]
+    ]
   }
 
   mgnt_subnet2 = {
@@ -45,7 +52,12 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
+    route_table_name              = "custom"
+    disable_bgp_route_propagation = true
+    route_entries = [
+      # [name of the route, address prefix, next_hop_type, next_hop_in_ip_address]
+      ["custom1", "10.0.2.0/24", "VnetLocal", null],
+      ["custom2", "0.0.0.0/0", "Internet", null]
+    ]
   }
-
-
 }
