@@ -62,5 +62,5 @@ subnets = {
   }
 }
 
-default_subnet_routing = ["subnet01", "subnet02", "subnet03"]
+default_subnet_routing = ["subnet01", "subnet02", "subnet03"] # it is not working as expected it only works if I give one name
 custom_subnet_routing = ["subnet04"]
