@@ -54,10 +54,13 @@ subnets = {
     enforce_private_link_endpoint_network_policies = true
   }
   mgnt_subnet4 = {
-    subnet_name                                    = "custom"
+    subnet_name                                    = "subnet04"
     subnet_address_prefix                          = ["10.1.5.0/24"]
     nsg_name                                       = "NSG-Subnet04"
     service_endpoints                              = ["Microsoft.Sql"]
     enforce_private_link_endpoint_network_policies = true
   }
 }
+
+default_subnet_routing = ["subnet01", "subnet02", "subnet03"]
+custom_subnet_routing = ["subnet04"]

@@ -54,3 +54,12 @@ variable "dns_servers" {
   type        = list(any)
   default     = []
 }
+
+variable default_subnet_routing {
+  type = list
+  default = []
+}
+variable "custom_subnet_routing" {
+  type = list
+  default = []
+}

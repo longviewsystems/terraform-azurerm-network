@@ -89,19 +89,21 @@ module "routes" {
   tags                = var.tags
 }
 
+# Associate list of subnets in var.default_subnet_routing to default route table 
 resource "azurerm_subnet_route_table_association" "default_route_table_association" {
   for_each = {
-    for k, subnets in var.subnets : k => subnets
-    if lookup(subnets, "subnet_name", "custom") != "custom"
+    for value, subnets_names in var.subnets : value => subnets_names
+    if lookup(subnets_names, "subnet_name", var.default_subnet_routing) == var.default_subnet_routing
   }
   subnet_id      = azurerm_subnet.snet[each.key].id
   route_table_id = module.routes.default_route_table_id[0]
 }
 
+# Associate list of subnets in var.custom_subnet_routing to custom route table 
 resource "azurerm_subnet_route_table_association" "custom_route_table_association" {
   for_each = {
-    for k, subnets in var.subnets : k => subnets
-    if lookup(subnets, "subnet_name", "custom") == "custom"
+    for value, subnets_names in var.subnets : value => subnets_names
+    if lookup(subnets_names, "subnet_name", var.custom_subnet_routing) == var.custom_subnet_routing
   }
   subnet_id      = azurerm_subnet.snet[each.key].id
   route_table_id = module.routes.custom_route_table_id[0]

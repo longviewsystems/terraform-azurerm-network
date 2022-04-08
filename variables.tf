@@ -52,23 +52,6 @@ variable "subnets" {
   default = {}
 }
 
-
-# variable "assign_custom_routes" {
-#   description = "Assign custom routes to particular subnet"
-#   type = map
-#   default = {
-#     "name" = "subnet01"
-# }
-# }
-
-# #TODO: make sure this works.
-# variable "assign_routes" {
-#   type = bool
-#   description = "If false, no routes will be assigned."
-#   default = false
-# }
-
-#TODO: make sure this works.  Assumes the routeTable exists.
 variable "default_route_table_id" {
   type        = string
   description = "Name of the default route table id." 
@@ -77,4 +60,15 @@ variable "default_route_table_id" {
 variable "custom_route_table_id" {
   type        = string
   description = "Name of the custom route table id." 
+}
+
+variable default_subnet_routing {
+  type = list
+  description = "Associate list of subnets to default route table"
+  default = []
+}
+variable "custom_subnet_routing" {
+  type = list
+  description = "Associate list of subnets to custom route table"
+  default = []
 }
