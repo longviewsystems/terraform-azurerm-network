@@ -1,8 +1,3 @@
-variable "subscription_id" {
-  description = "Resources to be created in the specified subscription"
-  type        = string
-  default     = "7f3c4fcf-626c-49e0-9160-a756147abaa4" # name - SUB-LVS-CMP-DEV
-}
 variable "create_resource_group" {
   description = "Whether to create resource group and use it for all networking resources"
   type        = string
