@@ -46,14 +46,14 @@ resource "azurerm_subnet" "snet" {
   address_prefixes                               = each.value.subnet_address_prefix
   service_endpoints                              = lookup(each.value, "service_endpoints", [])
   enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", null)
-  
+
 }
 
 #-----------------------------------------------
 # Network security group - Default is "false"
 #-----------------------------------------------
 resource "azurerm_network_security_group" "nsg" {
-  for_each = var.subnets
+  for_each            = var.subnets
   name                = each.value["nsg_name"]
   resource_group_name = local.resource_group_name
   location            = local.location
