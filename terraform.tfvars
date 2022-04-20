@@ -2,7 +2,7 @@ resource_group_name = "pradeep-rg3"
 vnetwork_name       = "vnet-nsg-assc"
 location            = "EastUS"
 vnet_address_space  = ["10.1.0.0/16"]
-dns_servers = ["10.1.1.24"]
+dns_servers         = ["10.1.1.24"]
 
 
 subnets = {
