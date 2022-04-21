@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.0.0...2.1.0) (2022-04-21)
+
+
+### Features
+
+* **azboard-22993:** Update terraform network ([33d84d3](https://github.com/longviewsystems/terraform-azurerm-network/commit/33d84d38320ff6c3becd57a65adfaf63cb97dc22))
+* **azboard-22993:** Update terraform network ([9859afa](https://github.com/longviewsystems/terraform-azurerm-network/commit/9859afa6ddbdbb8c76743fc44ac11f918d340853))
+* **azboard-22993:** Update terraform network ([b583251](https://github.com/longviewsystems/terraform-azurerm-network/commit/b583251f95b747dd7e86eb8b724c60965c115434))
+
 # [2.0.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/1.1.3...2.0.0) (2022-03-28)
 
 
