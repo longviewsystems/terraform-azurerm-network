@@ -1,4 +1,4 @@
-resource_group_name = "pradeep-rg3"
+resource_group_name = "vnet-nsg"
 vnetwork_name       = "vnet-nsg-assc"
 location            = "EastUS"
 vnet_address_space  = ["10.1.0.0/16"]
