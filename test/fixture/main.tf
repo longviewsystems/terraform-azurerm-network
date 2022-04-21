@@ -1,21 +1,27 @@
-
 #------------------------
 # Local declarations
 #------------------------
+
+resource "random_string" "random" {
+  length           = 4
+  special          = false
+}
+
 locals {
-  resource_group_name = element(coalescelist(data.azurerm_resource_group.rgrp.*.name, azurerm_resource_group.rg.*.name, [""]), 0)
+  resource_group_name = "rg-${var.resource_group_name}-${random_string.random.result}"
   location            = element(coalescelist(data.azurerm_resource_group.rgrp.*.location, azurerm_resource_group.rg.*.location, [""]), 0)
 }
 
+
 data "azurerm_resource_group" "rgrp" {
   count = var.create_resource_group == false ? 1 : 0
-  name  = var.resource_group_name
+  name  = local.resource_group_name
 }
 
 
 resource "azurerm_resource_group" "rg" {
   count    = var.create_resource_group ? 1 : 0
-  name     = var.resource_group_name
+  name     = local.resource_group_name
   location = var.location
   tags     = merge({ "Name" = format("%s", var.resource_group_name) }, var.tags, )
 }
@@ -47,16 +53,17 @@ resource "azurerm_subnet" "snet" {
   address_prefixes                               = each.value.subnet_address_prefix
   service_endpoints                              = lookup(each.value, "service_endpoints", [])
   enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", null)
-
-
-
+  
 }
 
 #-----------------------------------------------
 # Network security group - Default is "false"
 #-----------------------------------------------
 resource "azurerm_network_security_group" "nsg" {
-  for_each            = var.subnets
+  for_each = {
+    for name, subnets in var.subnets : name => subnets
+    if subnets.create_nsg == true
+  }
   name                = each.value["nsg_name"]
   resource_group_name = local.resource_group_name
   location            = local.location
@@ -79,7 +86,10 @@ resource "azurerm_network_security_group" "nsg" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
-  for_each                  = var.subnets
+  for_each = {
+    for name, subnets in var.subnets : name => subnets
+    if subnets.create_nsg == true
+  }
   subnet_id                 = azurerm_subnet.snet[each.key].id
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
 }
