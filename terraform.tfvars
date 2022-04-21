@@ -64,7 +64,7 @@ subnets = {
 
       # To use defaults, use "" without adding any values.
 
-      ["", "", "", "", "", "", "", ""],
+      ["", "100", "", "", "", "", "", ""],
 
     ]
 
@@ -74,7 +74,7 @@ subnets = {
 
       # To use defaults, use "" without adding any values.
 
-      ["", "", "", "", "", "", "", ""],
+      ["", "100", "", "", "", "", "", ""],
 
     ]
   }
