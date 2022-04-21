@@ -40,10 +40,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 
 resource "azurerm_subnet" "snet" {
-  for_each = {
-    for name, subnets in var.subnets : name => subnets
-    if subnets.create_nsg == true
-  }
+  for_each                                       = var.subnets
   name                                           = each.value.subnet_name
   resource_group_name                            = local.resource_group_name
   virtual_network_name                           = azurerm_virtual_network.vnet.name
@@ -59,7 +56,10 @@ resource "azurerm_subnet" "snet" {
 # Network security group - Default is "false"
 #-----------------------------------------------
 resource "azurerm_network_security_group" "nsg" {
-  for_each            = var.subnets
+  for_each = {
+    for name, subnets in var.subnets : name => subnets
+    if subnets.create_nsg == true
+  }
   name                = each.value["nsg_name"]
   resource_group_name = local.resource_group_name
   location            = local.location
