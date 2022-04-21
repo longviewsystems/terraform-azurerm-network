@@ -39,7 +39,10 @@ resource "azurerm_virtual_network" "vnet" {
 
 
 resource "azurerm_subnet" "snet" {
-  for_each                                       = var.subnets
+  for_each = {
+    for name, subnets in var.subnets : name => subnets
+    if subnets.create_nsg == true
+  }
   name                                           = each.value.subnet_name
   resource_group_name                            = local.resource_group_name
   virtual_network_name                           = azurerm_virtual_network.vnet.name
@@ -76,7 +79,10 @@ resource "azurerm_network_security_group" "nsg" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
-  for_each                  = var.subnets
+  for_each = {
+    for name, subnets in var.subnets : name => subnets
+    if subnets.create_nsg == true
+  }
   subnet_id                 = azurerm_subnet.snet[each.key].id
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
 }
