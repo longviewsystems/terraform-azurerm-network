@@ -7,19 +7,19 @@ variable "create_resource_group" {
 variable "resource_group_name" {
   description = "A container that holds related resources for an Azure solution"
   type        = string
-  default     = "rg-demo-westeurope-01"
+  default     = "rg-demo-eastus-01"
 }
 
 variable "location" {
   description = "The location/region to keep all your network resources. To get the list of all locations with table format from azure cli, run 'az account list-locations -o table'"
   type        = string
-  default     = "westeurope"
+  default     = "EastUS"
 }
 
 variable "vnetwork_name" {
   description = "Name of your Azure Virtual Network"
   type        = string
-  default     = "vnet-azure-westeurope-001"
+  default     = "vnet-azure-eastus-001"
 }
 
 variable "vnet_address_space" {
