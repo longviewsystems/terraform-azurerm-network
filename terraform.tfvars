@@ -26,6 +26,15 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
+    
+    create_route_table            = true
+    route_table_name              = "default"
+    disable_bgp_route_propagation = true
+    routes=[
+      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
+      ["default","0.0.0.0/0","Internet",null],
+      ["AzureFireWall","10.0.2.0/24","VnetLocal",null]
+    ]
   }
 
   mgnt_subnet2 = {
@@ -46,6 +55,15 @@ subnets = {
       # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
+    ]
+    
+    create_route_table            = true
+    route_table_name              = "default1"
+    disable_bgp_route_propagation = true
+    routes=[
+      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
+      ["default","0.0.0.0/0","Internet",null],
+      ["AzureFireWall","10.0.2.0/24","VnetLocal",null]
     ]
   }
   
@@ -76,6 +94,14 @@ subnets = {
 
       ["", "", "", "", "", "", "", ""],
 
+    ]
+    
+    create_route_table            = false
+    route_table_name              = "default2"
+    disable_bgp_route_propagation = true
+    routes=[
+      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
+      ["","","",null]
     ]
   }
 
