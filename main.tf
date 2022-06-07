@@ -94,6 +94,10 @@ resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
 }
     
+#-----------------------------------------------
+#          Route Tables 
+#-----------------------------------------------
+    
 resource "azurerm_route_table" "route_table" {
   for_each = {
     for name, subnets in var.subnets : name => subnets
