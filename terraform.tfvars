@@ -28,7 +28,7 @@ subnets = {
     ]
     
     create_route_table            = true
-    route_table_name              = "default"
+    route_table_name              = "Routetable-Subnet01"
     disable_bgp_route_propagation = true
     routes=[
       #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
@@ -58,7 +58,7 @@ subnets = {
     ]
     
     create_route_table            = true
-    route_table_name              = "default1"
+    route_table_name              = "Routetable-Subnet02"
     disable_bgp_route_propagation = true
     routes=[
       #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
@@ -97,7 +97,7 @@ subnets = {
     ]
     
     create_route_table            = false
-    route_table_name              = "default2"
+    route_table_name              = "default"
     disable_bgp_route_propagation = true
     routes=[
       #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
