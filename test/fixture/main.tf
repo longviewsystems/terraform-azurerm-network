@@ -1,7 +1,7 @@
 module "network_test1" {
 source              = "../../"
 resource_group_name = "vnet-nsg"
-vnetwork_name       = "vnet-nsg-assc"
+vnetwork_name       = "vnet-nsg-assc1"
 location            = "EastUS"
 vnet_address_space  = ["10.1.0.0/16"]
 dns_servers         = ["10.1.1.24"]
@@ -45,7 +45,7 @@ subnets = {
 module "network_test2" {
 source              = "../../"
 resource_group_name = "vnet-nsg"
-vnetwork_name       = "vnet-nsg-assc"
+vnetwork_name       = "vnet-nsg-assc2"
 location            = "EastUS"
 vnet_address_space  = ["10.1.0.0/16"]
 dns_servers         = ["10.1.1.24"]
@@ -86,7 +86,7 @@ subnets = {
 module "network_test3" {
 source              = "../../"
 resource_group_name = "vnet-nsg"
-vnetwork_name       = "vnet-nsg-assc"
+vnetwork_name       = "vnet-nsg-assc3"
 location            = "EastUS"
 vnet_address_space  = ["10.1.0.0/16"]
 dns_servers         = ["10.1.1.24"]
