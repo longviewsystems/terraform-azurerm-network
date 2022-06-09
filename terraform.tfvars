@@ -1,9 +1,8 @@
-resource_group_name = "vnet-nsg"
+resource_group_name = "rg-dev"
 vnetwork_name       = "vnet-nsg-assc"
-location            = "EastUS"
+location            = "East US"
 vnet_address_space  = ["10.1.0.0/16"]
 dns_servers         = ["10.1.1.24"]
-
 
 subnets = {
   mgnt_subnet = {
@@ -48,7 +47,7 @@ subnets = {
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
   }
-  
+
   # To create a subnet without NSG Association.
   # Set create_nsg to false and set nsg_name to empty.
   mgnt_subnet3 = {
