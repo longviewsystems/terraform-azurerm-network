@@ -32,6 +32,11 @@ output "subnet_ids" {
   description = "List of IDs of subnets"
   value       = flatten(concat([for s in azurerm_subnet.snet : s.id]))
 }
+  
+output "subnet_names" {
+  description = "List of names of subnets"
+  value       = flatten(concat([for s in azurerm_subnet.snet : s.name]))
+}
 
 output "network_security_group_ids" {
   description = "List of the Network security groups and ids"
