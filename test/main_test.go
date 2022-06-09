@@ -16,17 +16,16 @@ func TestTerraformAzDoAgent(t *testing.T) {
 
 
         Vars: map[string]interface{}{
-			"expectedSubnet1" := subnet01,
-                        "expectedSubnet2" := subnet02,
-                        "expectedSubnet3" := subnet03,
-
+			"expectedSubnet1": subnet01,
+                        "expectedSubnet2": subnet02,
+                        "expectedSubnet3": subnet03,
 
 			// We also can see how lists and maps translate between terratest and terraform.
-			"expectedList1" := []string{expectedSubnet1},
-                        "expectedList2" := []string{expectedSubnet2},
-                        "expectedList3" := []string{expectedSubnet3},
+			"expectedList1": []string{expectedSubnet1},
+                        "expectedList2": []string{expectedSubnet2},
+                        "expectedList3": []string{expectedSubnet3},
 		
-		}
+		},
 	})
 
 	defer terraform.Destroy(t, options)
