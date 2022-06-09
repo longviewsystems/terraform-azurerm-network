@@ -26,6 +26,9 @@ func TestTerraformAzDoAgent(t *testing.T) {
                         "expectedList3": []string{expectedSubnet3},
 		
 		},
+		
+		// Variables to pass to our Terraform code using -var-file options
+		VarFiles: []string{"terraform.tfvars"},
 	})
 
 	defer terraform.Destroy(t, options)
