@@ -1,3 +1,5 @@
+## [2.1.1](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.1.0...2.1.1) (2022-06-09)
+
 # [2.1.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.0.0...2.1.0) (2022-04-21)
 
 
