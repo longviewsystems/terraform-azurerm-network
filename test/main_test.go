@@ -11,7 +11,7 @@ func TestTerraformAzDoAgent(t *testing.T) {
 	t.Parallel()
 	// retryable errors in terraform testing.
 	options := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		TerraformDir: "./fixtures",
+		TerraformDir: "./fixture",
 	})
 
 	defer terraform.Destroy(t, options)
