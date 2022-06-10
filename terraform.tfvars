@@ -1,8 +1,9 @@
-resource_group_name = "rg-dev"
+resource_group_name = "vnet-nsg"
 vnetwork_name       = "vnet-nsg-assc"
-location            = "East US"
+location            = "EastUS"
 vnet_address_space  = ["10.1.0.0/16"]
 dns_servers         = ["10.1.1.24"]
+
 
 subnets = {
   mgnt_subnet = {
@@ -25,6 +26,15 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
+    
+    create_route_table            = true
+    route_table_name              = "Routetable-Subnet01"
+    disable_bgp_route_propagation = true
+    routes=[
+      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
+      ["default","0.0.0.0/0","Internet",null],
+      ["AzureFireWall","10.0.2.0/24","VnetLocal",null]
+    ]
   }
 
   mgnt_subnet2 = {
@@ -46,8 +56,17 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
+    
+    create_route_table            = true
+    route_table_name              = "Routetable-Subnet02"
+    disable_bgp_route_propagation = true
+    routes=[
+      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
+      ["default","0.0.0.0/0","Internet",null],
+      ["AzureFireWall","10.0.2.0/24","VnetLocal",null]
+    ]
   }
-
+  
   # To create a subnet without NSG Association.
   # Set create_nsg to false and set nsg_name to empty.
   mgnt_subnet3 = {
@@ -75,6 +94,14 @@ subnets = {
 
       ["", "", "", "", "", "", "", ""],
 
+    ]
+    
+    create_route_table            = false
+    route_table_name              = "default"
+    disable_bgp_route_propagation = true
+    routes=[
+      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
+      ["","","",null]
     ]
   }
 
