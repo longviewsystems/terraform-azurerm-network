@@ -27,14 +27,7 @@ subnets = {
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
 
-    create_route_table            = true
-    route_table_name              = "default"
-    disable_bgp_route_propagation = true
-    routes=[
-      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-      ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"],
-    ]
-
+    route_table_id = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-nsg/providers/Microsoft.Network/routeTables/default"
 
   }
 
@@ -57,13 +50,8 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
-    create_route_table            = true
-    route_table_name              = "default01"
-    disable_bgp_route_propagation = true
-    routes=[
-      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-      ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"],
-    ]
+    route_table_id = ""
+
   }
   
   # To create a subnet without NSG Association.
@@ -94,13 +82,8 @@ subnets = {
       ["", "", "", "", "", "", "", ""],
 
     ]
-    create_route_table            = true
-    route_table_name              = "default02"
-    disable_bgp_route_propagation = true
-    routes=[
-      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-      ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"]
-    ]
+    route_table_id = ""
+
   }
 
 
