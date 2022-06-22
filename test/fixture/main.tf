@@ -40,14 +40,14 @@ route_tables_object = {
   "route_table_custom" = {
     "disable_bgp_route_propagation" = true
     "id" = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-route/providers/Microsoft.Network/routeTables/custom"
-    "location" = "westeurope"
+    "location" = "EastUS"
     "name" = "custom"
 
   }
   "route_table_default" = {
     "disable_bgp_route_propagation" = true
     "id" = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-route/providers/Microsoft.Network/routeTables/default"
-    "location" = "westeurope"
+    "location" = "EastUS"
     "name" = "default"
 
   }
@@ -89,18 +89,18 @@ subnets = {
 }
 }
   
-route_tables_object = {
+route_tables_object01 = {
   "route_table_custom" = {
     "disable_bgp_route_propagation" = true
     "id" = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-route/providers/Microsoft.Network/routeTables/custom"
-    "location" = "westeurope"
+    "location" = "EastUS"
     "name" = "custom"
 
   }
   "route_table_default" = {
     "disable_bgp_route_propagation" = true
     "id" = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-route/providers/Microsoft.Network/routeTables/default"
-    "location" = "westeurope"
+    "location" = "EastUS"
     "name" = "default"
 
   }
@@ -149,18 +149,18 @@ mgnt_subnet3 = {
 }
 }
   
-route_tables_object = {
+route_tables_object02 = {
   "route_table_custom" = {
     "disable_bgp_route_propagation" = true
     "id" = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-route/providers/Microsoft.Network/routeTables/custom"
-    "location" = "westeurope"
+    "location" = "EastUS"
     "name" = "custom"
 
   }
   "route_table_default" = {
     "disable_bgp_route_propagation" = true
     "id" = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-route/providers/Microsoft.Network/routeTables/default"
-    "location" = "westeurope"
+    "location" = "EastUS"
     "name" = "default"
 
   }
