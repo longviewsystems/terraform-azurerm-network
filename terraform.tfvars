@@ -7,7 +7,7 @@ dns_servers         = ["10.1.1.24"]
 
 subnets = {
   mgnt_subnet = {
-    subnet_name                                    = "subnet01"
+    subnet_name                                    = "VpnGatewaySubnet"
     subnet_address_prefix                          = ["10.1.2.0/24"]
     create_nsg                                     = true
     nsg_name                                       = "NSG-Subnet01"
@@ -26,13 +26,14 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
-
-    route_table_id = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-nsg/providers/Microsoft.Network/routeTables/default"
+    
+    route_table_name = "vpngateway_route_table"
+    //route_table_id = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/vnet-nsg/providers/Microsoft.Network/routeTables/default"
 
   }
 
   mgnt_subnet2 = {
-    subnet_name                                    = "subnet02"
+    subnet_name                                    = "SpokeSubnet"
     subnet_address_prefix                          = ["10.1.3.0/24"]
     create_nsg                                     = true
     nsg_name                                       = "NSG-Subnet02"
@@ -50,14 +51,14 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
-    route_table_id = ""
+    route_table_name = "SpokeSubnet_route_table"
 
   }
   
   # To create a subnet without NSG Association.
   # Set create_nsg to false and set nsg_name to empty.
   mgnt_subnet3 = {
-    subnet_name                                    = "subnet03"
+    subnet_name                                    = "FirewallSubnet"
     subnet_address_prefix                          = ["10.1.4.0/24"]
     create_nsg                                     = false
     nsg_name                                       = ""
@@ -82,7 +83,8 @@ subnets = {
       ["", "", "", "", "", "", "", ""],
 
     ]
-    route_table_id = ""
+    route_table_name = ""
+    //route_table_id = ""
 
   }
 
