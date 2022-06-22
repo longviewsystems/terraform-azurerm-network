@@ -1,3 +1,12 @@
+## [2.1.5](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.1.4...2.1.5) (2022-06-22)
+
+
+### Bug Fixes
+
+* added resources to testing ([3ac75e1](https://github.com/longviewsystems/terraform-azurerm-network/commit/3ac75e1b90d684e12ac4a7f2843e8d970fb68c97))
+* comment out all output ([062d0df](https://github.com/longviewsystems/terraform-azurerm-network/commit/062d0df23c0837ccf36cadada33812263339ad2e))
+* rm docker.sock ([c82b5f3](https://github.com/longviewsystems/terraform-azurerm-network/commit/c82b5f301dd18cca3e59a6149cd09567275bdfe3))
+
 ## [2.1.1](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.1.0...2.1.1) (2022-06-09)
 
 # [2.1.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.0.0...2.1.0) (2022-04-21)
