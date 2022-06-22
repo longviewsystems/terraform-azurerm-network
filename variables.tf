@@ -40,3 +40,9 @@ variable "dns_servers" {
   type        = list(any)
   default     = []
 }
+
+variable "route_tables_object"{
+  type=map(any)
+  default = {
+  }
+  }
