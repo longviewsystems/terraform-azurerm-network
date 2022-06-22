@@ -8,7 +8,7 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = var.resource_group_name
   dns_servers         = var.dns_servers
   address_space       = var.vnet_address_space
-  tags                = merge({ "Name" = format("%s", var.vnetwork_name) }, var.tags, )
+  tags                = var.tags
 
 }
 
@@ -25,6 +25,7 @@ resource "azurerm_subnet" "snet" {
   address_prefixes                               = each.value.subnet_address_prefix
   service_endpoints                              = lookup(each.value, "service_endpoints", [])
   enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", null)
+  service_endpoint_policy_ids                    = []
 
 }
 
