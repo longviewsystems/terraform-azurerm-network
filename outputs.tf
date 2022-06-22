@@ -27,3 +27,8 @@ output "subnet_names" {
   description = "List of names of subnets"
   value       = flatten(concat([for s in azurerm_subnet.snet : s.name]))
 }
+
+# output "all_subnet_output" {
+#   description = "List of names of subnets"
+#   value       = azurerm_subnet.snet
+# }
