@@ -70,8 +70,10 @@ resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
 resource "azurerm_subnet_route_table_association" "routetable" {
    for_each = {
     for name, subnets in var.subnets : name => subnets
-    if subnets.route_table_id != ""
+    if subnets.route_table_name != ""
   }
   subnet_id                 = azurerm_subnet.snet[each.key].id
-  route_table_id            = each.value.route_table_id 
+  //route_table_id            = each.value.route_table_name 
+  route_table_id            = var.route_tables_object[each.value.route_table_name].id
+
 }
