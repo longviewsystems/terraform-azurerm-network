@@ -42,7 +42,7 @@ variable "dns_servers" {
 }
 
 variable "route_tables_object"{
-  type=map(any)
-  default = {
-  }
+  description = "Returns the full object of the created route tables"
+  type        = map(any)
+  default     = {}
   }
