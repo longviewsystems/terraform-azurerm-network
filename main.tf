@@ -68,19 +68,30 @@ resource "azurerm_subnet_route_table_association" "routetable" {
 #          Diagnostic Settings
 #-----------------------------------------------
     
-# resource "azurerm_monitor_diagnostic_setting" "vnet" {
-#   #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics. pass empty map which will create no diagnistics settings
-  
-#   name                       = lower("${azurerm_virtual_network.vnet.name}-diag")
-#   target_resource_id         = azurerm_virtual_network.vnet.id
-#   storage_account_id         = var.diagnostic_settings.storage_account_id
-#   log_analytics_workspace_id = var.diagnostic_settings.log_analytics_workspace_id
-  
-#   dynamic "log" {
-#     for_each = var.diagnostic_settings.vnet_diag_logs
-#     content {
-#       category = log.value
-#       enabled  = true
-#     }
-#   }
-# }
+resource "azurerm_monitor_diagnostic_setting" "vnet" {
+  #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics. pass empty map which will create no diagnistics settings
+  count = var.diagnostic_settings.diagnostics_enabled ? 1 : 0
+  name                       = lower("${azurerm_virtual_network.vnet.name}-diag")
+  target_resource_id         = azurerm_virtual_network.vnet.id
+  storage_account_id         = var.diagnostic_settings.storage_account_id
+  log_analytics_workspace_id = var.diagnostic_settings.log_analytics_workspace_id
+
+  log {
+      category = "VMProtectionAlerts"
+      enabled  = true
+
+    retention_policy {
+      enabled = true
+      days  = var.diagnostic_settings.retention_policy
+    }
+  }
+
+  metric {
+    category = "AllMetrics"
+
+    retention_policy {
+      enabled = true
+      days  = var.diagnostic_settings.retention_policy
+    }
+  }
+}

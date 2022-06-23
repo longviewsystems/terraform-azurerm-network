@@ -51,8 +51,8 @@ resource "azurerm_monitor_diagnostic_setting" "nsg" {
       category = log.value
       enabled  = true
       retention_policy {
-        days    = 0
-        enabled = false
+        enabled = true
+        days  = var.diagnostic_settings.retention_policy
       }
     }
   }

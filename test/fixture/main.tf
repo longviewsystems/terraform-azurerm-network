@@ -57,6 +57,7 @@ module "network_test2" {
     storage_account_id = null
     log_analytics_workspace_id = azurerm_log_analytics_workspace.shared_services.id
     nsg_diag_logs = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
+    retention_policy = 0
   }
 
   subnets = {
@@ -105,6 +106,7 @@ diagnostic_settings  = {
   storage_account_id = azurerm_storage_account.shared_services.id
   log_analytics_workspace_id = azurerm_log_analytics_workspace.shared_services.id
   nsg_diag_logs = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
+  retention_policy = 90
 }
 
 subnets = {
