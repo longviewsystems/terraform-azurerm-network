@@ -4,9 +4,9 @@
 
 module "test1_routes" {
   source              = "git::https://github.com/longviewsystems/terraform-azurerm-routes.git?ref=1.0.2"
-  resource_group_name      = azurerm_resource_group.fixture["test1"].name
-  location                 = azurerm_resource_group.fixture["test1"].location  
- 
+  resource_group_name = azurerm_resource_group.fixture["test1"].name
+  location            = azurerm_resource_group.fixture["test1"].location
+
   route_tables = {
     route_table_default = { # key value for route table
       route_table_name              = "rt-default-01"
@@ -45,13 +45,13 @@ module "test1_routes" {
       }
     }
   }
-} 
+}
 
 module "test2_routes" {
   source              = "git::https://github.com/longviewsystems/terraform-azurerm-routes.git?ref=1.0.2"
-  resource_group_name      = azurerm_resource_group.fixture["test2"].name
-  location                 = azurerm_resource_group.fixture["test2"].location  
- 
+  resource_group_name = azurerm_resource_group.fixture["test2"].name
+  location            = azurerm_resource_group.fixture["test2"].location
+
   route_tables = {
     route_table_default = { # key value for route table
       route_table_name              = "rt-default-02"
@@ -90,7 +90,7 @@ module "test2_routes" {
       }
     }
   }
-} 
+}
 
 # resource "azurerm_route_table" "route_table_test3_default" {
 #   name                          = "rt-test3-default"

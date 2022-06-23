@@ -5,7 +5,7 @@ locals {
       subnet_address_prefix                          = ["10.1.2.0/24"]
       create_nsg                                     = true
       nsg_name                                       = "NSG-Subnet01"
-      route_table_id = "/subscriptions/57215661-2f9e-482f-9334-c092e02651ec/resourceGroups/mod-test1-rg-lqfs/providers/Microsoft.Network/routeTables/rt-test1-other"
+      route_table_id                                 = "/subscriptions/57215661-2f9e-482f-9334-c092e02651ec/resourceGroups/mod-test1-rg-lqfs/providers/Microsoft.Network/routeTables/rt-test1-other"
       enforce_private_link_endpoint_network_policies = true
       service_endpoints                              = ["Microsoft.Storage"]
       nsg_inbound_rules = [
@@ -27,7 +27,7 @@ locals {
       subnet_address_prefix                          = ["10.1.2.0/24"]
       create_nsg                                     = true
       nsg_name                                       = "NSG-Subnet01"
-      route_table_id = "/subscriptions/57215661-2f9e-482f-9334-c092e02651ec/resourceGroups/mod-test1-rg-lqfs/providers/Microsoft.Network/routeTables/rt-test1-other"
+      route_table_id                                 = "/subscriptions/57215661-2f9e-482f-9334-c092e02651ec/resourceGroups/mod-test1-rg-lqfs/providers/Microsoft.Network/routeTables/rt-test1-other"
       enforce_private_link_endpoint_network_policies = true
       service_endpoints                              = ["Microsoft.Storage"]
       nsg_inbound_rules = [
@@ -50,7 +50,7 @@ locals {
 output "route_table_ids" {
   value = {
     for key, subnets in local.subnets : key => subnets
-    if subnets.route_table_id != null && subnets.route_table_id != "" 
+    if subnets.route_table_id != null && subnets.route_table_id != ""
   }
 }
 
