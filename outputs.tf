@@ -28,6 +28,11 @@ output "subnet_names" {
   value       = flatten(concat([for s in azurerm_subnet.snet : s.name]))
 }
 
+output "route_tables_object" {
+  description = "Returns the full object of the created route tables"
+  value       = azurerm_route_table.route_table
+}
+  
 # output "all_subnet_output" {
 #   description = "List of names of subnets"
 #   value       = azurerm_subnet.snet
