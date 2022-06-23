@@ -1,9 +1,23 @@
 repos:
-- repo: git://github.com/antonbabenko/pre-commit-terraform
-  rev: v1.60.0 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
+- repo: https://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.72.1 # Get the latest from: https://github.com/antonbabenko/pre-commit-terraform/releases
   hooks:
     - id: terraform_fmt
     - id: terraform_docs
+    - id: terragrunt_fmt
+      name: Format Terragrunt
     - id: terraform_tflint
-      #args:
-        #- --args=--module*
+      name: Initialize tflint 
+      args: 
+        - --args=--init
+        - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+    - id: terraform_tflint
+      name: Validate Terraform using tflint (./)
+      args: 
+        - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+        - --args=__GIT_WORKING_DIR__/
+    - id: terraform_tflint
+      name: Validate Terraform using tflint (./test/fixture)
+      args: 
+        - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+        - --args=__GIT_WORKING_DIR__/test/fixture
