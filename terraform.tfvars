@@ -27,13 +27,7 @@ subnets = {
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
 
-    create_route_table            = true
-    route_table_name              = "default"
-    disable_bgp_route_propagation = true
-    routes=[
-      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-      ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"],
-    ]
+    route_table_name              = "route_table_default"
 
 
   }
@@ -57,13 +51,8 @@ subnets = {
       # To use defaults, use "" without adding any values.
       ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
     ]
-    create_route_table            = true
-    route_table_name              = "default01"
-    disable_bgp_route_propagation = true
-    routes=[
-      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-      ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"],
-    ]
+
+    route_table_name              = "route_table_custom"
   }
   
   # To create a subnet without NSG Association.
@@ -94,14 +83,48 @@ subnets = {
       ["", "", "", "", "", "", "", ""],
 
     ]
-    create_route_table            = true
-    route_table_name              = "default02"
-    disable_bgp_route_propagation = true
-    routes=[
-      #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-      ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"]
-    ]
+
+    route_table_name              = ""
   }
 
 
 }
+
+route_tables = {
+    route_table_default = { # key value for route table
+      route_table_name              = "route_table_default"
+      disable_bgp_route_propagation = true
+      route_entries = {
+        default_route1 = { # key value for routes
+          route_name             = "default"
+          address_prefix         = "10.0.2.0/24"
+          next_hop_type          = "VnetLocal"
+          next_hop_in_ip_address = null
+        }
+        default_route2 = { # key value for routes
+          route_name             = "AzureFireWall"
+          address_prefix         = "0.0.0.0/0"
+          next_hop_type          = "VirtualAppliance"
+          next_hop_in_ip_address = "10.1.4.4"
+        }
+      }
+    }
+    route_table_custom = {
+      route_table_name              = "route_table_custom"
+      disable_bgp_route_propagation = true
+      route_entries = {
+        custom_route1 = {
+          route_name             = "AzureFirewall"
+          address_prefix         = "0.0.0.0/0"
+          next_hop_type          = "VirtualAppliance"
+          next_hop_in_ip_address = "10.1.4.4"
+        }
+        custom_route2 = {
+          route_name             = "custom"
+          address_prefix         = "10.0.3.0/24"
+          next_hop_type          = "VnetLocal"
+          next_hop_in_ip_address = null
+        }
+      }
+    }
+  }
