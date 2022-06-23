@@ -6,6 +6,8 @@ module "network_test1" {
   vnet_address_space  = ["10.1.0.0/16"]
   dns_servers         = ["10.1.1.24"]
 
+  # test default value.
+  # diagnostic_settings 
 
   subnets = {
     subnet = {
@@ -49,6 +51,15 @@ module "network_test2" {
   vnet_address_space  = ["10.1.0.0/16"]
   dns_servers         = ["10.1.1.24"]
 
+  #test with la only
+  diagnostic_settings  = {
+    diagnostics_enabled = true
+    storage_account_id = null
+    log_analytics_workspace_id = azurerm_log_analytics_workspace.shared_services.id
+    nsg_diag_logs = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
+    retention_policy = 0
+  }
+
   subnets = {
     
     subnet2 = {
@@ -85,9 +96,18 @@ module "network_test3" {
 source              = "../../"
 resource_group_name = azurerm_resource_group.fixture["test3"].name
 vnetwork_name       = "vnet-nsg-assc3"
-location            = "EastUS"
+location            = "Westus2"
 vnet_address_space  = ["10.1.0.0/16"]
 dns_servers         = ["10.1.1.24"]
+
+#test with la only
+diagnostic_settings  = {
+  diagnostics_enabled = true
+  storage_account_id = azurerm_storage_account.shared_services.id
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.shared_services.id
+  nsg_diag_logs = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
+  retention_policy = 90
+}
 
 subnets = {
     subnet2 = {

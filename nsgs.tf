@@ -36,25 +36,25 @@ resource "azurerm_subnet_network_security_group_association" "nsg_assoc" {
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
 }
 
-# resource "azurerm_monitor_diagnostic_setting" "nsg" {
-#   #for_each = azurerm_network_security_group.nsg
-#   #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics.  Otherwise, do not.
-#   for_each = var.diagnostic_settings.diagnostics_enabled ? azurerm_network_security_group.nsg : {}
+resource "azurerm_monitor_diagnostic_setting" "nsg" {
+  #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics. pass empty map which will create no diagnistics settings
+  for_each = var.diagnostic_settings.diagnostics_enabled ? azurerm_network_security_group.nsg : {}
 
-#   name                       = lower("${each.key}-diag")
-#   target_resource_id         = azurerm_network_security_group.nsg[each.key].id
-#   storage_account_id         = var.diagnostic_settings.storage_account_id
-#   log_analytics_workspace_id = var.diagnostic_settings.log_analytics_workspace_id
+  name                       = lower("${each.value.name}-diag")
+  target_resource_id         = azurerm_network_security_group.nsg[each.key].id
+  storage_account_id         = var.diagnostic_settings.storage_account_id
+  log_analytics_workspace_id = var.diagnostic_settings.log_analytics_workspace_id
 
-#   dynamic "log" {
-#     for_each = var.diagnostic_settings.nsg_diag_logs
-#     content {
-#       category = log.value
-#       enabled  = true
+  dynamic "log" {
+    for_each = var.diagnostic_settings.nsg_diag_logs
+    content {
+      category = log.value
+      enabled  = true
+      retention_policy {
+        enabled = true
+        days  = var.diagnostic_settings.retention_policy
+      }
+    }
+  }
+}
 
-#       # retention_policy {
-#       #   enabled = false
-#       # }
-#     }
-#   }
-# }
