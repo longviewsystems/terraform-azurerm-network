@@ -46,6 +46,15 @@ variable "diagnostic_settings" {
   }
 }
 
+# variable "route_to_subnet_map" {
+#   type = map(object({
+#       subnet_name = string
+#       route_table_id  = string
+#     }))
+#   description = "A map of subnets IDs to Route IDs.  Use this to associate routes to subnets."
+#   default = {}
+# }
+
 variable "tags" {
   description = "A map of tags to add to all resources"
   type        = map(string)

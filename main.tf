@@ -32,57 +32,34 @@ resource "azurerm_subnet" "snet" {
 #-----------------------------------------------
 #          Route Tables 
 #-----------------------------------------------
-    
-resource "azurerm_route_table" "route_table" {
-  for_each = {
-    for name, subnets in var.subnets : name => subnets
-    if subnets.create_route_table == true
-  }
-  name                          = each.value.route_table_name
-  location                      = var.location
-  resource_group_name           = var.resource_group_name
-  disable_bgp_route_propagation = each.value.disable_bgp_route_propagation
-  tags                          = var.tags
-  
-  dynamic "route" {
-    for_each = each.value.routes
-    content {
-      name                   = route.value[0] == "" ? "default" : route.value[0]
-      address_prefix         = route.value[1] 
-      next_hop_type          = route.value[2]
-      next_hop_in_ip_address = route.value[3]
-    }
-  }
-}
-    
+
+#data lookup -> route id -> exists already
+
 resource "azurerm_subnet_route_table_association" "routetable" {
-   for_each = {
-    for name, subnets in var.subnets : name => subnets
-    if subnets.create_route_table == true
-  }
-  subnet_id                 = azurerm_subnet.snet[each.key].id
-  route_table_id            = azurerm_route_table.route_table[each.key].id
+  for_each       = local.route_table_list
+  subnet_id      = azurerm_subnet.snet[each.key].id
+  route_table_id = data.azurerm_route_table.routetable[each.key].id
 }
 
 #-----------------------------------------------
 #          Diagnostic Settings
 #-----------------------------------------------
-    
+
 resource "azurerm_monitor_diagnostic_setting" "vnet" {
   #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics. pass empty map which will create no diagnistics settings
-  count = var.diagnostic_settings.diagnostics_enabled ? 1 : 0
+  count                      = var.diagnostic_settings.diagnostics_enabled ? 1 : 0
   name                       = lower("${azurerm_virtual_network.vnet.name}-diag")
   target_resource_id         = azurerm_virtual_network.vnet.id
   storage_account_id         = var.diagnostic_settings.storage_account_id
   log_analytics_workspace_id = var.diagnostic_settings.log_analytics_workspace_id
 
   log {
-      category = "VMProtectionAlerts"
-      enabled  = true
+    category = "VMProtectionAlerts"
+    enabled  = true
 
     retention_policy {
       enabled = true
-      days  = var.diagnostic_settings.retention_policy
+      days    = var.diagnostic_settings.retention_policy
     }
   }
 
@@ -91,7 +68,7 @@ resource "azurerm_monitor_diagnostic_setting" "vnet" {
 
     retention_policy {
       enabled = true
-      days  = var.diagnostic_settings.retention_policy
+      days    = var.diagnostic_settings.retention_policy
     }
   }
 }
