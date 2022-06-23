@@ -18,12 +18,12 @@ output "shared_services_azurerm_storage_account_name_id" {
   value = azurerm_storage_account.shared_services.id
 }
 
-output "test3_azurerm_route_table" {
-  description = "Route table for test 3."
-  value = azurerm_route_table.route_table_test3_default
+output "route_tables_test1" {
+  description = "Route table for test 1."
+  value = module.test1_routes
 }
 
-output "test3_azurerm_route_table_rg" {
-  description = "Route table Resource Group for test 3."
-  value = azurerm_resource_group.fixture["test3"]
+output "route_tables_test2" {
+  description = "Route table for test 2."
+  value = module.test2_routes
 }
