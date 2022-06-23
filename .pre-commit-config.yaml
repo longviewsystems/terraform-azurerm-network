@@ -17,7 +17,17 @@ repos:
         - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
         - --args=__GIT_WORKING_DIR__/
     - id: terraform_tflint
-      name: Validate Terraform using tflint (./test/fixture)
+      name: Validate Terraform using tflint (./test/stg1)
       args: 
         - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-        - --args=__GIT_WORKING_DIR__/test/fixture
+        - --args=__GIT_WORKING_DIR__/test/stg1
+    - id: terraform_tflint
+      name: Validate Terraform using tflint (./test/test1)
+      args: 
+        - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+        - --args=__GIT_WORKING_DIR__/test/test1       
+    - id: terraform_tflint
+      name: Validate Terraform using tflint (./test/test2)
+      args: 
+        - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+        - --args=__GIT_WORKING_DIR__/test/test2            
