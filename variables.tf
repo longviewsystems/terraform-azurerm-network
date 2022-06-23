@@ -40,3 +40,18 @@ variable "dns_servers" {
   type        = list(any)
   default     = []
 }
+
+variable "route_tables" {
+  description = "Create Route Tables with routes"
+  type = map(object({
+    route_table_name              = string
+    disable_bgp_route_propagation = string
+    route_entries = map(object({
+      route_name             = string
+      address_prefix         = string
+      next_hop_type          = string
+      next_hop_in_ip_address = string
+    }))
+  }))
+  default = null
+}
