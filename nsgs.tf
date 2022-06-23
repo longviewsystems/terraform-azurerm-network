@@ -40,7 +40,7 @@ resource "azurerm_monitor_diagnostic_setting" "nsg" {
   #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics. pass empty map which will create no diagnistics settings
   for_each = var.diagnostic_settings.diagnostics_enabled ? azurerm_network_security_group.nsg : {}
 
-  name                       = lower("${each.key}-diag")
+  name                       = lower("${each.value.name}-diag")
   target_resource_id         = azurerm_network_security_group.nsg[each.key].id
   storage_account_id         = var.diagnostic_settings.storage_account_id
   log_analytics_workspace_id = var.diagnostic_settings.log_analytics_workspace_id
@@ -50,10 +50,11 @@ resource "azurerm_monitor_diagnostic_setting" "nsg" {
     content {
       category = log.value
       enabled  = true
-
-      # retention_policy {
-      #   enabled = false
-      # }
+      retention_policy {
+        days    = 0
+        enabled = false
+      }
     }
   }
 }
+

@@ -25,7 +25,7 @@ resource "azurerm_subnet" "snet" {
   address_prefixes                               = each.value.subnet_address_prefix
   service_endpoints                              = lookup(each.value, "service_endpoints", [])
   enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", null)
-  service_endpoint_policy_ids                    = []
+  service_endpoint_policy_ids                    = null
 
 }
 
@@ -63,3 +63,24 @@ resource "azurerm_subnet_route_table_association" "routetable" {
   subnet_id                 = azurerm_subnet.snet[each.key].id
   route_table_id            = azurerm_route_table.route_table[each.key].id
 }
+
+#-----------------------------------------------
+#          Diagnostic Settings
+#-----------------------------------------------
+    
+# resource "azurerm_monitor_diagnostic_setting" "vnet" {
+#   #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics. pass empty map which will create no diagnistics settings
+  
+#   name                       = lower("${azurerm_virtual_network.vnet.name}-diag")
+#   target_resource_id         = azurerm_virtual_network.vnet.id
+#   storage_account_id         = var.diagnostic_settings.storage_account_id
+#   log_analytics_workspace_id = var.diagnostic_settings.log_analytics_workspace_id
+  
+#   dynamic "log" {
+#     for_each = var.diagnostic_settings.vnet_diag_logs
+#     content {
+#       category = log.value
+#       enabled  = true
+#     }
+#   }
+# }
