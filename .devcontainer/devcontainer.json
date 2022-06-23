@@ -41,7 +41,6 @@
 		"ms-azuretools.vscode-docker",
 		"ms-azure-devops.azure-pipelines",
 		"ms-vscode-remote.vscode-remote-extensionpack",
-        "aaron-bond.better-comments",
-        "GitHub.copilot"
+        "aaron-bond.better-comments"
 	]
 }
