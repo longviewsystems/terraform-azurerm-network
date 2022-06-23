@@ -30,19 +30,19 @@ module "network_test1" {
         # To use defaults, use "" without adding any values.
         ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
       ]
-      
+
       create_route_table            = true
       route_table_name              = "default"
       disable_bgp_route_propagation = true
-      routes=[
+      routes = [
         #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-        ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"],
+        ["default", "0.0.0.0/0", "VirtualAppliance", "10.1.4.4"],
       ]
     }
 
   }
 }
-  
+
 module "network_test2" {
   source              = "../../"
   resource_group_name = azurerm_resource_group.fixture["test2"].name
@@ -52,16 +52,16 @@ module "network_test2" {
   dns_servers         = ["10.1.1.24"]
 
   #test with la only
-  diagnostic_settings  = {
-    diagnostics_enabled = true
-    storage_account_id = null
+  diagnostic_settings = {
+    diagnostics_enabled        = true
+    storage_account_id         = null
     log_analytics_workspace_id = azurerm_log_analytics_workspace.shared_services.id
-    nsg_diag_logs = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
-    retention_policy = 0
+    nsg_diag_logs              = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
+    retention_policy           = 0
   }
 
   subnets = {
-    
+
     subnet2 = {
       subnet_name                                    = "subnet02"
       subnet_address_prefix                          = ["10.1.3.0/24"]
@@ -81,35 +81,35 @@ module "network_test2" {
         # To use defaults, use "" without adding any values.
         ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
       ]
-      
+
       create_route_table            = true
       route_table_name              = "default01"
       disable_bgp_route_propagation = true
-      routes=[
+      routes = [
         #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-        ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"],
+        ["default", "0.0.0.0/0", "VirtualAppliance", "10.1.4.4"],
       ]
     }
   }
 }
 module "network_test3" {
-source              = "../../"
-resource_group_name = azurerm_resource_group.fixture["test3"].name
-vnetwork_name       = "vnet-nsg-assc3"
-location            = "Westus2"
-vnet_address_space  = ["10.1.0.0/16"]
-dns_servers         = ["10.1.1.24"]
+  source              = "../../"
+  resource_group_name = azurerm_resource_group.fixture["test3"].name
+  vnetwork_name       = "vnet-nsg-assc3"
+  location            = "Westus2"
+  vnet_address_space  = ["10.1.0.0/16"]
+  dns_servers         = ["10.1.1.24"]
 
-#test with la only
-diagnostic_settings  = {
-  diagnostics_enabled = true
-  storage_account_id = azurerm_storage_account.shared_services.id
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.shared_services.id
-  nsg_diag_logs = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
-  retention_policy = 90
-}
+  #test with la only
+  diagnostic_settings = {
+    diagnostics_enabled        = true
+    storage_account_id         = azurerm_storage_account.shared_services.id
+    log_analytics_workspace_id = azurerm_log_analytics_workspace.shared_services.id
+    nsg_diag_logs              = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
+    retention_policy           = 90
+  }
 
-subnets = {
+  subnets = {
     subnet2 = {
       subnet_name                                    = "subnet02"
       subnet_address_prefix                          = ["10.1.3.0/24"]
@@ -129,49 +129,49 @@ subnets = {
         # To use defaults, use "" without adding any values.
         ["ntp_out", "103", "Outbound", "Allow", "Udp", "123", "", "0.0.0.0/0"],
       ]
-      
+
       create_route_table            = true
       route_table_name              = "default01"
       disable_bgp_route_propagation = true
-      routes=[
+      routes = [
         #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-        ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"],
+        ["default", "0.0.0.0/0", "VirtualAppliance", "10.1.4.4"],
       ]
-    }  
+    }
     subnet3 = {
-        subnet_name                                    = "subnet03"
-        subnet_address_prefix                          = ["10.1.4.0/24"]
-        create_nsg                                     = false
-        nsg_name                                       = "NSG-subnet03"
-        service_endpoints                              = ["Microsoft.Sql"]
-        enforce_private_link_endpoint_network_policies = true
-        nsg_inbound_rules = [
+      subnet_name                                    = "subnet03"
+      subnet_address_prefix                          = ["10.1.4.0/24"]
+      create_nsg                                     = false
+      nsg_name                                       = "NSG-subnet03"
+      service_endpoints                              = ["Microsoft.Sql"]
+      enforce_private_link_endpoint_network_policies = true
+      nsg_inbound_rules = [
 
-          # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
+        # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
 
-          # To use defaults, use "" without adding any values.
+        # To use defaults, use "" without adding any values.
 
-          ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
 
-        ]
+      ]
 
-        nsg_outbound_rules = [
+      nsg_outbound_rules = [
 
-          # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
+        # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
 
-          # To use defaults, use "" without adding any values.
+        # To use defaults, use "" without adding any values.
 
-          ["", "", "", "", "", "", "", ""],
+        ["", "", "", "", "", "", "", ""],
 
-        ]
-        
-        create_route_table            = true
-        route_table_name              = "default02"
-        disable_bgp_route_propagation = true
-        routes=[
-          #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
-          ["default","0.0.0.0/0","VirtualAppliance","10.1.4.4"],
-        ]
-      }
-}
+      ]
+
+      create_route_table            = true
+      route_table_name              = "default02"
+      disable_bgp_route_propagation = true
+      routes = [
+        #[route_name,address_prefix,next_hop_type,next_hop_in_ip_address]
+        ["default", "0.0.0.0/0", "VirtualAppliance", "10.1.4.4"],
+      ]
+    }
+  }
 }
