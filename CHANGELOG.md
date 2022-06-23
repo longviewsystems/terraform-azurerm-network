@@ -1,3 +1,19 @@
+# [2.2.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.1.5...2.2.0) (2022-06-23)
+
+
+### Bug Fixes
+
+* remove extra tag ([32c1335](https://github.com/longviewsystems/terraform-azurerm-network/commit/32c133567010028df1a19eddfffa25b7369f7372))
+* rm extra file ([0b5d468](https://github.com/longviewsystems/terraform-azurerm-network/commit/0b5d4683ec9ef3f5ada7200b0b52fe4f6391ff00))
+* rm extra file ([d0da8c4](https://github.com/longviewsystems/terraform-azurerm-network/commit/d0da8c4dca96af7aa2e1e5f134c450ed157e6669))
+
+
+### Features
+
+* add diagnostic logging for NSGs ([e973b71](https://github.com/longviewsystems/terraform-azurerm-network/commit/e973b71b2560f33bd3745bc49cfd52bb814a0c0e))
+* add diagnostic_settings ([a5384be](https://github.com/longviewsystems/terraform-azurerm-network/commit/a5384be252abd4f86f2ebcf755df0dc035ceb706))
+* added retention policy ([08e275b](https://github.com/longviewsystems/terraform-azurerm-network/commit/08e275bddf7c28337bdc3265de0fc1b623eba39c))
+
 ## [2.1.5](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.1.4...2.1.5) (2022-06-22)
 
 
