@@ -68,6 +68,10 @@ jobs:
         with:
           terraform_version: 1.0.11
           terraform_wrapper: false
+      - name: Setup Terragrunt
+        uses: autero1/action-terragrunt@v1.1.0
+        with:
+          terragrunt_version: 0.38.1      
       - name: 'Install Go Modules'
         working-directory: test
         run: go mod download
