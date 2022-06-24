@@ -9,7 +9,7 @@ import (
 func TestTerraformAzDoAgent(t *testing.T) {
 	options := &terraform.Options{
 		TerraformBinary: "terragrunt",
-		TerraformDir: "/wksp/test",
+		TerraformDir: "./test",
 	}
 
 	//Stage #2 should be destroyed first
