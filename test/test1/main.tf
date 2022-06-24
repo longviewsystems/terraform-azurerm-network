@@ -1,5 +1,5 @@
 module "network_test1" {
-  source              = "/wksp"
+  source              = "../../.."
   resource_group_name = var.resource_group_name
   vnetwork_name       = "vnet-nsg-assc3"
   location            = var.location
