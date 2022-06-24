@@ -3,6 +3,9 @@
 SHELL := /bin/bash
 
 test:
+  go test -timeout 60m
+
+test-build:
 	cd /wksp/test/stg1
 	terragrunt apply -auto-approve
 	cd /wksp/test

@@ -73,7 +73,7 @@ jobs:
         run: go mod download
       - name: 'Run Terratest'
         working-directory: test
-        run: go test 60m
+        run: go test -timeout 60m
         env:
           ARM_SUBSCRIPTION_ID: ${{ secrets.SUB_ID_SUB_LVS_CMP_DEV }}
           ARM_CLIENT_ID: ${{ secrets.CLIENT_ID_SP_CLOUDMANAGEMENTPLATFORM_PIPELINE_SERVICECONNECTION_DEV }}
