@@ -1,3 +1,26 @@
+# [2.3.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.2.0...2.3.0) (2022-06-27)
+
+
+### Bug Fixes
+
+* rename container ([069852a](https://github.com/longviewsystems/terraform-azurerm-network/commit/069852a4cf5b5745b90aadffcb2501e7fd0b9397))
+* update go path ([95b4ecc](https://github.com/longviewsystems/terraform-azurerm-network/commit/95b4ecc7fbeeae392e424aa481d5dab74b6c26c8))
+* update terratest cmd ([6f78caf](https://github.com/longviewsystems/terraform-azurerm-network/commit/6f78caffd34bfeb3da1e1847db4a5b4d4daf4306))
+
+
+### Features
+
+* add route data source ([6d12d39](https://github.com/longviewsystems/terraform-azurerm-network/commit/6d12d393440cbb6287dab00245be55c81b306e9a))
+* added clean commands ([baf602e](https://github.com/longviewsystems/terraform-azurerm-network/commit/baf602e65e8893775a2e62810541a649ccb2845f))
+* increase pre-commit coverage ([706d172](https://github.com/longviewsystems/terraform-azurerm-network/commit/706d1724640134cc985a3fe44d95b730a065e49d))
+* test outputs ([ef8e6da](https://github.com/longviewsystems/terraform-azurerm-network/commit/ef8e6da3e92ce3bf552b1f5beddc0559b8bccc81))
+* update pre-commit ([ff16208](https://github.com/longviewsystems/terraform-azurerm-network/commit/ff16208834573cc5207e638940e2cce3bfb0c02e))
+* update test cmd ([f66e330](https://github.com/longviewsystems/terraform-azurerm-network/commit/f66e330a36334f1f2f2b55905e3decd89222e133))
+* update test resources ([d06b1c9](https://github.com/longviewsystems/terraform-azurerm-network/commit/d06b1c9f8e217fb0d43f8b8628d868ea607d3501))
+* update testing ([c2f0c01](https://github.com/longviewsystems/terraform-azurerm-network/commit/c2f0c011bae63ed8340691fa1632cf24a317c173))
+* update testing ([1232624](https://github.com/longviewsystems/terraform-azurerm-network/commit/1232624a5ee41c97928872a0f8fc97dacd7e81fc))
+* update tests ([9ce028c](https://github.com/longviewsystems/terraform-azurerm-network/commit/9ce028c4cdb15302f1f82defcfb1e38c3bbcb405))
+
 # [2.2.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.1.5...2.2.0) (2022-06-23)
 
 
