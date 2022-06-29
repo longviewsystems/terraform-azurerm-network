@@ -11,6 +11,7 @@ module "network_test1" {
       subnet_name                                    = "snet-appgw-01"
       subnet_address_prefix                          = ["10.1.2.0/24"]
       create_nsg                                     = true
+      create_flow_logs                               = false
       nsg_name                                       = "nsg-appgw-01"
       route_table_rg_name =  var.route_table1.route_table_rg_name
       route_table_name =  var.route_table1.route_table_name
@@ -58,6 +59,7 @@ module "network_test1" {
       subnet_name                                    = "snet-db-01"
       subnet_address_prefix                          = ["10.1.4.0/24"]
       create_nsg                                     = false
+      create_flow_logs                               = false
       nsg_name                                       = "snet-db-01-nsg"
       route_table_rg_name =  null #var.route_table2.route_table_rg_name
       route_table_name =  null #var.route_table2.route_table_name
