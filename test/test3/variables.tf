@@ -1,7 +1,7 @@
 variable "location" {
   type        = string
   description = "Location used to deploy the resources"
-  default     = "eastus"
+  default     = "westus2"
 }
 
 variable "resource_group_name" {
