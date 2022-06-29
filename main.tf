@@ -111,7 +111,7 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
     workspace_resource_id = var.log_analytics_resource_id //LA id
     interval_in_minutes   = 10
   }
-  depends_on = [azurerm_storage_account.la]
+  //depends_on = [azurerm_storage_account.la]
 }
 
 /*resource "azurerm_storage_account" "la" {
