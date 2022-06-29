@@ -114,7 +114,7 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
   depends_on = [azurerm_storage_account.la]
 }
 
-resource "azurerm_storage_account" "la" {
+/*resource "azurerm_storage_account" "la" {
   name                     = var.la_storage_account_name
   resource_group_name      = var.resource_group_name
   location                 = var.location
@@ -122,4 +122,4 @@ resource "azurerm_storage_account" "la" {
   account_replication_type = "GRS"
   tags =var.tags
   
-}
+}*/
