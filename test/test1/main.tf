@@ -36,6 +36,7 @@ module "network_test1" {
       subnet_name                                    = "snet-appweb-01"
       subnet_address_prefix                          = ["10.1.3.0/24"]
       create_nsg                                     = true
+      create_flow_logs                               = false
       nsg_name                                       = "nsg-appweb-01"
       route_table_rg_name =  var.route_table2.route_table_rg_name
       route_table_name =  var.route_table2.route_table_name
