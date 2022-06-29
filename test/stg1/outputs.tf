@@ -8,7 +8,7 @@ output "shared_services_resource_groups" {
   value       = azurerm_resource_group.shared_services
 }
 
-output "shared_services_log_analytics_resource_id" {
+output "shared_services_log_analytics_workspace_id" {
   description = "Log Analytics Resource ID."
   value       = azurerm_log_analytics_workspace.shared_services.id
 }
@@ -28,7 +28,7 @@ output "route_tables_test2" {
   value       = module.test2_routes
 }
   
-output "shared_services_log_analytics_workspace_id" {
-  description = "Log Analytics workspace ID."
+output "shared_services_log_analytics_resource_id" {
+  description = "Log Analytics resource ID."
   value       = azurerm_log_analytics_workspace.shared_services.workspace_id
 }
