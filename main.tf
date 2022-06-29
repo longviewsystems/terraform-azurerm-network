@@ -78,7 +78,6 @@ resource "azurerm_monitor_diagnostic_setting" "vnet" {
 #-----------------------------------------------
 
 resource "azurerm_network_watcher" "nwatcher" {
-  //count               = var.create_network_watcher != false ? 1 : 0
   name                = "NetworkWatcher_${var.location}"
   location            = var.location
   resource_group_name = var.resource_group_name
