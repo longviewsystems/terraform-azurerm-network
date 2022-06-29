@@ -8,7 +8,7 @@ output "shared_services_resource_groups" {
   value       = azurerm_resource_group.shared_services
 }
 
-output "shared_services_log_analytics_workspace_id" {
+output "shared_services_log_analytics_resource_id" {
   description = "Log Analytics Resource ID."
   value       = azurerm_log_analytics_workspace.shared_services.id
 }
