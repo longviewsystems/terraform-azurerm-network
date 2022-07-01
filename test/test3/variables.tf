@@ -57,3 +57,9 @@ variable "log_analytics_resource_id" {
   default     = ""
 }
 
+variable "create_network_watcher" {
+  description = "whether to create network watcher or not"
+  type        = bool
+  default     = true
+  
+}
