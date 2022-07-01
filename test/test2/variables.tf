@@ -43,3 +43,10 @@ variable "route_table2" {
   })
   description = "Route Table 2 for this test."
 }
+
+variable "create_network_watcher" {
+  description = "whether to create network watcher or not"
+  type        = bool
+  default     = false
+  
+}
