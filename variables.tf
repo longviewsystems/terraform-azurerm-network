@@ -81,3 +81,10 @@ variable "la_storage_account_name" {
   type        = string
   default     = ""
 }
+
+variable "create_network_watcher" {
+  description = "whether to create network watcher or not"
+  type        = bool
+  default     = false
+  
+}
