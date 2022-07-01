@@ -8,6 +8,7 @@ module "network_test3" {
   storage_account_id  = var.storage_account_id
   log_analytics_workspace_id = var.log_analytics_workspace_id
   log_analytics_resource_id = var.log_analytics_resource_id
+  create_network_watcher  = true
   //la_storage_account_name = var.la_storage_account_name
 
   subnets = {
