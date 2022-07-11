@@ -57,3 +57,34 @@ variable "dns_servers" {
   type        = list(any)
   default     = []
 }
+
+variable "log_analytics_workspace_id" {
+  description = "Name of the log analytics workspace id"
+  type        = string
+  default     = ""
+}
+
+variable "log_analytics_resource_id" {
+  description = "Name of the log analytics resource id"
+  type        = string
+  default     = ""
+}
+
+variable "storage_account_id" {
+  description = "id of the log analytics storage account id"
+  type        = string
+  default     = ""
+}
+
+variable "la_storage_account_name" {
+  description = "Name of the log analytics storage account id"
+  type        = string
+  default     = ""
+}
+
+variable "create_network_watcher" {
+  description = "whether to create network watcher or not"
+  type        = bool
+  default     = false
+  
+}

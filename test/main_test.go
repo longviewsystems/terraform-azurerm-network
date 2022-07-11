@@ -17,4 +17,6 @@ func TestTerraformAzDoAgent(t *testing.T) {
 
 	//Stage #2 should be built last.
 	terraform.TgApplyAll(t, options)
+	
+	
 }

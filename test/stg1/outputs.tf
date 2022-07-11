@@ -27,3 +27,8 @@ output "route_tables_test2" {
   description = "Route table for test 2."
   value       = module.test2_routes
 }
+  
+output "shared_services_log_analytics_resource_id" {
+  description = "Log Analytics resource ID."
+  value       = azurerm_log_analytics_workspace.shared_services.workspace_id
+}
