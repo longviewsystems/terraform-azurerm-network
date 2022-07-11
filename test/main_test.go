@@ -13,8 +13,9 @@ func TestTerraformAzDoAgent(t *testing.T) {
 	}
 
 	//Stage #2 should be destroyed first
-	defer terraform.TgDestroyAll(t, options)
+	defer terraform.TgDestroy(t, options)
 
 	//Stage #2 should be built last.
 	terraform.TgApplyAll(t, options)
+	
 }
