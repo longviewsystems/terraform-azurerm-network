@@ -45,7 +45,7 @@ resource "azurerm_subnet_route_table_association" "routetable" {
 #          Diagnostic Settings
 #-----------------------------------------------
 
-resource "azurerm_monitor_diagnostic_setting" "vnet" {
+/*resource "azurerm_monitor_diagnostic_setting" "vnet" {
   #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics. pass empty map which will create no diagnistics settings
   count                      = var.diagnostic_settings.diagnostics_enabled ? 1 : 0
   name                       = lower("${azurerm_virtual_network.vnet.name}-diag")
@@ -71,7 +71,7 @@ resource "azurerm_monitor_diagnostic_setting" "vnet" {
       days    = var.diagnostic_settings.retention_policy
     }
   }
-}
+}*/
 
 #-----------------------------------------------
 #          Network Watcher
@@ -115,12 +115,4 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
    depends_on = [azurerm_network_watcher.nwatcher]
 }
 
-/*resource "azurerm_storage_account" "la" {
-  name                     = var.la_storage_account_name
-  resource_group_name      = var.resource_group_name
-  location                 = var.location
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
-  tags =var.tags
-  
-}*/
+
