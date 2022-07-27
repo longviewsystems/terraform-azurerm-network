@@ -86,8 +86,9 @@ resource "azurerm_subnet_route_table_association" "routetable" {
 }*/
 
 data "azurerm_network_watcher" "nwatcher" {
-  name                = "NetworkWatcher_${var.location}"
-  resource_group_name = var.resource_group_name
+  count               = var.create_network_watcher != false ? 1 : 0
+  name                = var.network_watcher_name
+  resource_group_name = var.nw_resource_group_name
 }
 
 resource "azurerm_network_watcher_flow_log" "nsg" {
@@ -97,11 +98,11 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
   }
   name     = lower("${each.key}-nsg-flow-log") #db-snet-nsg-net-dev1-usw2-rg-flowlog
 
-  network_watcher_name = data.azurerm_network_watcher.nwatcher.name
-  resource_group_name  = var.resource_group_name
+  network_watcher_name = var.network_watcher_name
+  resource_group_name  = var.nw_resource_group_name
 
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
-  storage_account_id        = var.storage_account_id
+  storage_account_id        = var.var.nw_storage_account_id
   enabled                   = true
   version                   = "2"
 
