@@ -82,9 +82,21 @@ variable "la_storage_account_name" {
   default     = ""
 }
 
+variable "network_watcher_name" {
+  description = "name of the network watcher."
+  type        = string
+  default     = ""
+  
+}
+
+variable "nw_resource_group_name" {
+  description = "Name of the network watcher resource grp"
+  type        = string
+  default     = ""
+}
+
 variable "create_network_watcher" {
-  description = "whether to create network watcher or not"
+  description = "Name of the network watcher resource grp"
   type        = bool
   default     = false
-  
 }

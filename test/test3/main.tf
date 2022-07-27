@@ -1,6 +1,7 @@
 module "network_test3" {
   source              = "../../"
   resource_group_name = var.resource_group_name
+  nw_resource_group_name = var.nw_resource_group_name
   vnetwork_name       = "vnet-nsg-assc3"
   location            = var.location
   vnet_address_space  = ["10.1.0.0/16"]
@@ -8,6 +9,7 @@ module "network_test3" {
   storage_account_id  = var.storage_account_id
   log_analytics_workspace_id = var.log_analytics_workspace_id
   log_analytics_resource_id = var.log_analytics_resource_id
+  network_watcher_name = var.network_watcher_name
   create_network_watcher  = true
   //la_storage_account_name = var.la_storage_account_name
 
