@@ -102,7 +102,7 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
   resource_group_name  = var.nw_resource_group_name
 
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
-  storage_account_id        = var.var.nw_storage_account_id
+  storage_account_id        = var.storage_account_id
   enabled                   = true
   version                   = "2"
 
