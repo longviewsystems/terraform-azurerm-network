@@ -28,16 +28,6 @@ output "subnet_names" {
   value       = flatten(concat([for s in azurerm_subnet.snet : s.name]))
 }
   
-output "network_watcher_name" {
-  description = "network watcher name"
-  value = data.azurerm_network_watcher.nwatcher.name
-}
-
-output "network_watcher_id" {
-  description = "network watcher id"
-  value = data.azurerm_network_watcher.nwatcher.id
-}
-
 # output "all_subnet_output" {
 #   description = "List of names of subnets"
 #   value       = azurerm_subnet.snet
