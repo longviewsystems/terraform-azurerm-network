@@ -70,7 +70,7 @@ variable "log_analytics_resource_id" {
   default     = ""
 }
 
-variable "storage_account_id" {
+variable "nw_storage_account_id" {
   description = "id of the log analytics storage account id"
   type        = string
   default     = ""
@@ -82,9 +82,21 @@ variable "la_storage_account_name" {
   default     = ""
 }
 
-/*variable "create_network_watcher" {
-  description = "whether to create network watcher or not"
+variable "network_watcher_name" {
+  description = "name of the network watcher."
+  type        = string
+  default     = ""
+  
+}
+
+variable "nw_resource_group_name" {
+  description = "Name of the network watcher resource grp"
+  type        = string
+  default     = ""
+}
+
+variable "create_network_watcher" {
+  description = "Name of the network watcher resource grp"
   type        = bool
   default     = false
-  
-}*/
+}
