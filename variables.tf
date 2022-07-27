@@ -70,7 +70,7 @@ variable "log_analytics_resource_id" {
   default     = ""
 }
 
-variable "nw_storage_account_id" {
+variable "storage_account_id" {
   description = "id of the log analytics storage account id"
   type        = string
   default     = ""
