@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.3.5...2.4.0) (2022-08-10)
+
+
+### Features
+
+* **azboard-27751:** Add Network Watcher Resources to NSGs ([5e5f785](https://github.com/longviewsystems/terraform-azurerm-network/commit/5e5f785d536801966a721df2d5221f1a453b6772))
+
 # [2.3.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.2.0...2.3.0) (2022-06-27)
 
 
