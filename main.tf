@@ -77,12 +77,18 @@ resource "azurerm_subnet_route_table_association" "routetable" {
 #          Network Watcher
 #-----------------------------------------------
 
-resource "azurerm_network_watcher" "nwatcher" {
+/*resource "azurerm_network_watcher" "nwatcher" {
   count               = var.create_network_watcher != false ? 1 : 0
   name                = "NetworkWatcher_${var.location}"
   location            = var.location
   resource_group_name = var.resource_group_name
   tags                =  var.tags
+}*/
+
+data "azurerm_network_watcher" "nwatcher" {
+  count               = var.create_network_watcher != false ? 1 : 0
+  name                = var.network_watcher_name
+  resource_group_name = var.nw_resource_group_name
 }
 
 resource "azurerm_network_watcher_flow_log" "nsg" {
@@ -92,8 +98,8 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
   }
   name     = lower("${each.key}-nsg-flow-log") #db-snet-nsg-net-dev1-usw2-rg-flowlog
 
-  network_watcher_name = "NetworkWatcher_${var.location}"
-  resource_group_name  = var.resource_group_name
+  network_watcher_name = var.network_watcher_name
+  resource_group_name  = var.nw_resource_group_name
 
   network_security_group_id = azurerm_network_security_group.nsg[each.key].id
   storage_account_id        = var.storage_account_id
@@ -112,7 +118,6 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
     workspace_resource_id = var.log_analytics_resource_id //LA id
     interval_in_minutes   = 10
   }
-   depends_on = [azurerm_network_watcher.nwatcher]
+   depends_on = [data.azurerm_network_watcher.nwatcher]
 }
-
 

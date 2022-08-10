@@ -57,6 +57,19 @@ variable "log_analytics_resource_id" {
   default     = ""
 }
 
+variable "network_watcher_name" {
+  description = "name of the network watcher."
+  type        = string
+  default     = "NetworkWatcher_westus2"
+  
+}
+
+variable "nw_resource_group_name" {
+  description = "Name of the network watcher resource grp"
+  type        = string
+  default     = "NetworkWatcherRG"
+}
+
 variable "create_network_watcher" {
   description = "whether to create network watcher or not"
   type        = bool
