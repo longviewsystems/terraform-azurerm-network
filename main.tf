@@ -96,7 +96,7 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
     for name, subnets in var.subnets : name => subnets
     if subnets.create_flow_logs == true
   }
-  name     = lower("${each.key}-nsg-flow-log") #db-snet-nsg-net-dev1-usw2-rg-flowlog
+  name     = lower("${azurerm_virtual_network.vnet.name}-${each.value.subnet_name}-log")
 
   network_watcher_name = var.network_watcher_name
   resource_group_name  = var.nw_resource_group_name
