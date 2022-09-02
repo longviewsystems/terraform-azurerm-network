@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.4.0...2.4.1) (2022-09-02)
+
+
+### Bug Fixes
+
+* **azboard-54975:** update flow log naming ([17b0c2d](https://github.com/longviewsystems/terraform-azurerm-network/commit/17b0c2d5518d94fd5594405e87e90150c48617dd))
+
 # [2.4.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.3.5...2.4.0) (2022-08-10)
 
 
