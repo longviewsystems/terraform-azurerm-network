@@ -1,3 +1,15 @@
+# [2.5.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.4.1...2.5.0) (2022-09-21)
+
+
+### Bug Fixes
+
+* remote LA workspace location ([fbfafd1](https://github.com/longviewsystems/terraform-azurerm-network/commit/fbfafd1330e348a01c587fb468fe0125480839d5))
+
+
+### Features
+
+* **azboard-54977:** Fix Log analytics location in flow logs ([50d92eb](https://github.com/longviewsystems/terraform-azurerm-network/commit/50d92ebf0853b7d9e84e08948de97938e43e3088))
+
 ## [2.4.1](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.4.0...2.4.1) (2022-09-02)
 
 
