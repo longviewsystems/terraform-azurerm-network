@@ -70,6 +70,12 @@ variable "log_analytics_resource_id" {
   default     = ""
 }
 
+variable "log_analytics_location" {
+  description = "The local of the Log Analytics Workspace.  Leave default value to 'location' specified in location variable. "
+  type = string
+  default = ""
+}
+
 variable "storage_account_id" {
   description = "id of the log analytics storage account id"
   type        = string

@@ -41,49 +41,6 @@ resource "azurerm_subnet_route_table_association" "routetable" {
   route_table_id = data.azurerm_route_table.routetable[each.key].id
 }
 
-#-----------------------------------------------
-#          Diagnostic Settings
-#-----------------------------------------------
-
-/*resource "azurerm_monitor_diagnostic_setting" "vnet" {
-  #if var.diagnostic_settings.diagnostics_enabled, then turn on diagnostics. pass empty map which will create no diagnistics settings
-  count                      = var.diagnostic_settings.diagnostics_enabled ? 1 : 0
-  name                       = lower("${azurerm_virtual_network.vnet.name}-diag")
-  target_resource_id         = azurerm_virtual_network.vnet.id
-  storage_account_id         = var.diagnostic_settings.storage_account_id
-  log_analytics_workspace_id = var.diagnostic_settings.log_analytics_workspace_id
-
-  log {
-    category = "VMProtectionAlerts"
-    enabled  = true
-
-    retention_policy {
-      enabled = true
-      days    = var.diagnostic_settings.retention_policy
-    }
-  }
-
-  metric {
-    category = "AllMetrics"
-
-    retention_policy {
-      enabled = true
-      days    = var.diagnostic_settings.retention_policy
-    }
-  }
-}*/
-
-#-----------------------------------------------
-#          Network Watcher
-#-----------------------------------------------
-
-/*resource "azurerm_network_watcher" "nwatcher" {
-  count               = var.create_network_watcher != false ? 1 : 0
-  name                = "NetworkWatcher_${var.location}"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  tags                =  var.tags
-}*/
 
 data "azurerm_network_watcher" "nwatcher" {
   count               = var.create_network_watcher != false ? 1 : 0
@@ -114,7 +71,7 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
   traffic_analytics {
     enabled               = true
     workspace_id          = var.log_analytics_workspace_id//wksp id
-    workspace_region      = var.location
+    workspace_region      = var.log_analytics_location == "" ? var.location : var.log_analytics_location
     workspace_resource_id = var.log_analytics_resource_id //LA id
     interval_in_minutes   = 10
   }
