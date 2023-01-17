@@ -3,7 +3,7 @@
 /*****************************************/
 
 module "test1_routes" {
-  source              = "git::https://github.com/longviewsystems/terraform-azurerm-routes.git?ref=1.0.2"
+  source              = "git::https://github.com/longviewsystems/terraform-azurerm-routes.git?ref=1.1.0"
   resource_group_name = azurerm_resource_group.fixture["test1"].name
   location            = azurerm_resource_group.fixture["test1"].location
 
@@ -48,7 +48,7 @@ module "test1_routes" {
 }
 
 module "test2_routes" {
-  source              = "git::https://github.com/longviewsystems/terraform-azurerm-routes.git?ref=1.0.2"
+  source              = "git::https://github.com/longviewsystems/terraform-azurerm-routes.git?ref=1.1.0"
   resource_group_name = azurerm_resource_group.fixture["test2"].name
   location            = azurerm_resource_group.fixture["test2"].location
 
