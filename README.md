@@ -41,9 +41,9 @@ module "network_test1" {
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
-        ["AllowAccessToGWM_ProbePorts","110","Inbound","Allow","TCP","65200-65535","GatewayManager","*"],
-        ["AllowAccessToInternet_Https","910","Inbound","Allow","TCP","","AzureLoadBalancer","*"],
-        ["AllowAccessToAzureLoadBalancer","920","Inbound","Allow","TCP","443","Internet","*"],
+        ["AllowAccessToGWM_ProbePorts","110","Inbound","Allow","Tcp","65200-65535","GatewayManager","*"],
+        ["AllowAccessToInternet_Https","910","Inbound","Allow","Tcp","","AzureLoadBalancer","*"],
+        ["AllowAccessToAzureLoadBalancer","920","Inbound","Allow","Tcp","443","Internet","*"],
         ["DenyAllInternetInbound","4096","Inbound","Deny","*","","Internet","*"]
       ]
 
@@ -65,8 +65,8 @@ module "network_test1" {
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
-        ["Allow_HTTPS", "100", "Inbound", "Allow", "TCP", "443", "*", "*"],
-        ["Allow_HTTP", "110", "Inbound", "Allow", "TCP", "80", "*", ""],
+        ["Allow_HTTPS", "100", "Inbound", "Allow", "Tcp", "443", "*", "*"],
+        ["Allow_HTTP", "110", "Inbound", "Allow", "Tcp", "80", "*", ""],
         ["Deny_All", "4096", "Inbound", "Deny", "*", "*", "", "*"],
       ]
 
@@ -89,17 +89,17 @@ module "network_test1" {
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
         ["Allow_MI_Subnet","100","Inbound","Allow","*","*","10.100.3.128/26","*"],          
-        ["Allow_MI_Mgmt","200","Inbound","Allow","TCP","9000, 9003, 1438, 1440, 1452","SqlManagement","*"],
-        ["Allow_MI_Mgmt2","300","Inbound","Allow","TCP","9000, 9003","CorpnetSaw","*"],
-        ["Allow_MI_Mgmt3","400","Inbound","Allow","TCP","9000, 9003","CorpnetPublic","*"],
-        ["Allow_MI_Health_Probe","500","Inbound","Allow","TCP","*","AzureLoadBalancer","*"],
+        ["Allow_MI_Mgmt","200","Inbound","Allow","Tcp","9000, 9003, 1438, 1440, 1452","SqlManagement","*"],
+        ["Allow_MI_Mgmt2","300","Inbound","Allow","Tcp","9000, 9003","CorpnetSaw","*"],
+        ["Allow_MI_Mgmt3","400","Inbound","Allow","Tcp","9000, 9003","CorpnetPublic","*"],
+        ["Allow_MI_Health_Probe","500","Inbound","Allow","Tcp","*","AzureLoadBalancer","*"],
         ["Deny_All_Internet_Inbound","4096","Inbound","Deny","*","","Internet","*"]
       ]
 
       nsg_outbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
-        ["Allow_MI_Mgmt_Outbound", "110", "Outbound", "Allow", "TCP", "*", "*", "AzureCloud"],
+        ["Allow_MI_Mgmt_Outbound", "110", "Outbound", "Allow", "Tcp", "*", "*", "AzureCloud"],
         ["Deny_All_Internet_Outbound","4096","Outbound","Deny","*","","Internet","*"]
       ]
     }
@@ -116,13 +116,13 @@ module "network_test1" {
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 2.88.1, < 3.0.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.0.0, < 4.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 2.88.1, < 3.0.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.0.0, < 4.0.0 |
 
 ## Modules
 
