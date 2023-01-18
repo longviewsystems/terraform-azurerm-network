@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.5.0...2.6.0) (2023-01-18)
+
+
+### Features
+
+* **azboard-72258:** Upgrade Azurerm provider version ([d050dba](https://github.com/longviewsystems/terraform-azurerm-network/commit/d050dba890fe43decb9021d9f1f8dfc1e3ba3bb6))
+
 # [2.5.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.4.1...2.5.0) (2022-09-21)
 
 
