@@ -6,7 +6,7 @@ locals {
       create_nsg                                     = true
       nsg_name                                       = "NSG-Subnet01"
       route_table_id                                 = "/subscriptions/57215661-2f9e-482f-9334-c092e02651ec/resourceGroups/mod-test1-rg-lqfs/providers/Microsoft.Network/routeTables/rt-test1-other"
-      enforce_private_link_endpoint_network_policies = true
+      private_endpoint_network_policies_enabled      = true
       service_endpoints                              = ["Microsoft.Storage"]
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
@@ -28,7 +28,7 @@ locals {
       create_nsg                                     = true
       nsg_name                                       = "NSG-Subnet01"
       route_table_id                                 = "/subscriptions/57215661-2f9e-482f-9334-c092e02651ec/resourceGroups/mod-test1-rg-lqfs/providers/Microsoft.Network/routeTables/rt-test1-other"
-      enforce_private_link_endpoint_network_policies = true
+      private_endpoint_network_policies_enabled      = true
       service_endpoints                              = ["Microsoft.Storage"]
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
