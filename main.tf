@@ -24,7 +24,7 @@ resource "azurerm_subnet" "snet" {
   virtual_network_name                           = azurerm_virtual_network.vnet.name
   address_prefixes                               = each.value.subnet_address_prefix
   service_endpoints                              = lookup(each.value, "service_endpoints", [])
-  enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", null)
+  private_endpoint_network_policies_enabled      = true
   service_endpoint_policy_ids                    = null
 
 }
@@ -70,7 +70,7 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
 
   traffic_analytics {
     enabled               = true
-    workspace_id          = var.log_analytics_workspace_id//wksp id
+    workspace_id          = var.log_analytics_workspace_id //wksp id
     workspace_region      = var.log_analytics_location == "" ? var.location : var.log_analytics_location
     workspace_resource_id = var.log_analytics_resource_id //LA id
     interval_in_minutes   = 10

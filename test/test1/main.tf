@@ -16,7 +16,7 @@ module "network_test1" {
       route_table_rg_name =  var.route_table1.route_table_rg_name
       route_table_name =  var.route_table1.route_table_name
       service_endpoints                              = ["Microsoft.Sql", "Microsoft.Storage"]
-      enforce_private_link_endpoint_network_policies = true
+      private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
@@ -41,7 +41,7 @@ module "network_test1" {
       route_table_rg_name =  var.route_table2.route_table_rg_name
       route_table_name =  var.route_table2.route_table_name
       service_endpoints                              = []
-      enforce_private_link_endpoint_network_policies = true
+      private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
@@ -65,7 +65,7 @@ module "network_test1" {
       route_table_rg_name =  null #var.route_table2.route_table_rg_name
       route_table_name =  null #var.route_table2.route_table_name
       service_endpoints                              = ["Microsoft.Sql"]
-      enforce_private_link_endpoint_network_policies = true
+      private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
