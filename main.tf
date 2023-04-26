@@ -24,7 +24,7 @@ resource "azurerm_subnet" "snet" {
   virtual_network_name                           = azurerm_virtual_network.vnet.name
   address_prefixes                               = each.value.subnet_address_prefix
   service_endpoints                              = lookup(each.value, "service_endpoints", [])
-  private_endpoint_network_policies_enabled      = true
+  private_endpoint_network_policies_enabled      = lookup(each.value, "private_endpoint_network_policies_enabled", null)
   service_endpoint_policy_ids                    = null
 
 }
@@ -65,7 +65,7 @@ resource "azurerm_network_watcher_flow_log" "nsg" {
 
   retention_policy {
     enabled = true
-    days    = 7
+    days    = 90
   }
 
   traffic_analytics {
