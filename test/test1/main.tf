@@ -13,8 +13,8 @@ module "network_test1" {
       create_nsg                                     = true
       create_flow_logs                               = false
       nsg_name                                       = "nsg-appgw-01"
-      route_table_rg_name =  var.route_table1.route_table_rg_name
-      route_table_name =  var.route_table1.route_table_name
+      route_table_rg_name                            =  var.route_table1.route_table_rg_name
+      route_table_name                               =  var.route_table1.route_table_name
       service_endpoints                              = ["Microsoft.Sql", "Microsoft.Storage"]
       private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [

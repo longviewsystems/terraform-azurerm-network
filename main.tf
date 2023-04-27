@@ -38,7 +38,7 @@ resource "azurerm_subnet" "snet" {
 resource "azurerm_subnet_route_table_association" "routetable" {
   for_each       = local.route_table_list
   subnet_id      = azurerm_subnet.snet[each.key].id
-  route_table_id = data.azurerm_route_table.routetable[each.key].id
+  route_table_id = local.route_table_list[each.key].route_table_id
 }
 
 
