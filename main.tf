@@ -26,6 +26,7 @@ resource "azurerm_subnet" "snet" {
   service_endpoints                              = lookup(each.value, "service_endpoints", [])
   private_endpoint_network_policies_enabled      = lookup(each.value, "private_endpoint_network_policies_enabled", null)
   service_endpoint_policy_ids                    = null
+  route_table_id                                 = null
 
 }
 
