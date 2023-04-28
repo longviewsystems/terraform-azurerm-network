@@ -28,23 +28,6 @@ variable "log_analytics_workspace_id" {
   description = "Log Analytics Workspace id to be used for Diagnostic Logging."
 }
 
-variable "route_table1" {
-  type = object({
-    route_table_name        = string
-    route_table_rg_name         = string
-  })
-  description = "Route Table 1 for this test."
-}
-
-
-variable "route_table2" {
-  type = object({
-    route_table_name        = string
-    route_table_rg_name         = string
-  })
-  description = "Route Table 2 for this test."
-}
-
 variable "la_storage_account_name" {
   description = "Name of the log analytics storage account id"
   type        = string

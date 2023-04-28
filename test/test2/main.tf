@@ -22,10 +22,10 @@ module "network_test2" {
       create_nsg                                     = true
       create_flow_logs                               = false
       nsg_name                                       = "nsg-appgw-01"
-      route_table_rg_name =  var.route_table1.route_table_rg_name
-      route_table_name =  var.route_table1.route_table_name
       service_endpoints                              = ["Microsoft.Sql", "Microsoft.Storage"]
-      private_endpoint_network_policies_enabled = true
+      route_table_id                                 = null
+      add_route                                      = false
+      private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
@@ -45,10 +45,10 @@ module "network_test2" {
       create_nsg                                     = false
       create_flow_logs                               = false
       nsg_name                                       = "NSG-subnet03"
-      route_table_rg_name =  var.route_table2.route_table_rg_name
-      route_table_name =  var.route_table2.route_table_name
       service_endpoints                              = ["Microsoft.Sql"]
-      private_endpoint_network_policies_enabled = true
+      add_route                                      = false
+      route_table_id                                 = null
+      private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.

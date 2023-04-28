@@ -9,7 +9,7 @@ resource "azurerm_network_security_group" "nsg" {
   name                = each.value["nsg_name"]
   resource_group_name = var.resource_group_name
   location            = var.location
-  tags                = merge({ "ResourceName" = lower("nsg_${each.key}_in") }, var.tags, )
+  tags                = var.tags
   dynamic "security_rule" {
     for_each = concat(lookup(each.value, "nsg_inbound_rules", []), lookup(each.value, "nsg_outbound_rules", []))
     content {

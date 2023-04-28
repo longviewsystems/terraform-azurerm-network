@@ -27,20 +27,22 @@ resource "azurerm_subnet" "snet" {
   private_endpoint_network_policies_enabled      = lookup(each.value, "private_endpoint_network_policies_enabled", null)
   service_endpoint_policy_ids                    = null
 
+
 }
 
 #-----------------------------------------------
 #          Route Tables 
 #-----------------------------------------------
 
-#data lookup -> route id -> exists already
 
 resource "azurerm_subnet_route_table_association" "routetable" {
-  for_each       = local.route_table_list
+  for_each = {
+    for name, subnets in var.subnets : name => subnets
+    if subnets.add_route == true
+  }
   subnet_id      = azurerm_subnet.snet[each.key].id
-  route_table_id = data.azurerm_route_table.routetable[each.key].id
+  route_table_id = each.value.route_table_id
 }
-
 
 data "azurerm_network_watcher" "nwatcher" {
   count               = var.create_network_watcher != false ? 1 : 0
