@@ -8,6 +8,8 @@ terraform {
   }
 }
 
-provider "azurerm" {
-  features {}
-}
+
+#This shoudl not be in modules.
+# provider "azurerm" {
+#   features {}
+# }
