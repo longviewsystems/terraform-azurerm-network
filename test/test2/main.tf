@@ -23,7 +23,7 @@ module "network_test2" {
       create_flow_logs                               = false
       nsg_name                                       = "nsg-appgw-01"
       service_endpoints                              = ["Microsoft.Sql", "Microsoft.Storage"]
-      route_table_id                                 = null
+      route_table_id                                 = ""
       add_route                                      = true
       private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
@@ -47,7 +47,7 @@ module "network_test2" {
       nsg_name                                       = "NSG-subnet03"
       service_endpoints                              = ["Microsoft.Sql"]
       add_route                                      = true
-      route_table_id                                 = null
+      route_table_id                                 = ""
       private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
