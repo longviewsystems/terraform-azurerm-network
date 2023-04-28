@@ -37,11 +37,13 @@ resource "azurerm_subnet" "snet" {
 #data lookup -> route id -> exists already
 
 resource "azurerm_subnet_route_table_association" "routetable" {
-  for_each       = local.route_table_list
+  for_each = {
+    for name, subnets in var.subnets : name => subnets
+    if subnets.add_route == true
+  }
   subnet_id      = azurerm_subnet.snet[each.key].id
-  route_table_id = local.route_table_list[each.key].route_table_id
+  route_table_id = each.value.route_table_id
 }
-
 
 data "azurerm_network_watcher" "nwatcher" {
   count               = var.create_network_watcher != false ? 1 : 0

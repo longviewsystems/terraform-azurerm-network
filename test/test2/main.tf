@@ -22,8 +22,6 @@ module "network_test2" {
       create_nsg                                     = true
       create_flow_logs                               = false
       nsg_name                                       = "nsg-appgw-01"
-      route_table_rg_name =  var.route_table1.route_table_rg_name
-      route_table_name =  var.route_table1.route_table_name
       service_endpoints                              = ["Microsoft.Sql", "Microsoft.Storage"]
       route_table_id                                 = null
       private_endpoint_network_policies_enabled      = true
@@ -46,8 +44,6 @@ module "network_test2" {
       create_nsg                                     = false
       create_flow_logs                               = false
       nsg_name                                       = "NSG-subnet03"
-      route_table_rg_name =  var.route_table2.route_table_rg_name
-      route_table_name =  var.route_table2.route_table_name
       service_endpoints                              = ["Microsoft.Sql"]
       route_table_id                                 = null
       private_endpoint_network_policies_enabled      = true
