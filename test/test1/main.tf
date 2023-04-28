@@ -14,7 +14,7 @@ module "network_test1" {
       create_flow_logs                               = false
       nsg_name                                       = "nsg-appgw-01"
       service_endpoints                              = ["Microsoft.Sql", "Microsoft.Storage"]
-      route_table_id                                 = "rt-appgw-01"
+      route_table_id                                 = each.value.route_table_id
       add_route                                      = true
       private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
@@ -39,7 +39,7 @@ module "network_test1" {
       create_flow_logs                               = false
       nsg_name                                       = "nsg-appweb-01"
       service_endpoints                              = []
-      route_table_id                                 = "rt-appweb-01"
+      route_table_id                                 = each.value.route_table_id
       add_route                                      = true
       private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
@@ -63,7 +63,7 @@ module "network_test1" {
       create_flow_logs                               = false
       nsg_name                                       = "snet-db-01-nsg"
       service_endpoints                              = ["Microsoft.Sql"]
-      route_table_id                                 = "rt-snet-db-01"
+      route_table_id                                 = each.value.route_table_id
       add_route                                      = true
       private_endpoint_network_policies_enabled      = true
       nsg_inbound_rules = [
