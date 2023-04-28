@@ -42,7 +42,7 @@ resource "azurerm_subnet_route_table_association" "routetable" {
     if subnets.add_route == true
   }
   subnet_id      = azurerm_subnet.snet[each.key].id
-  route_table_id = each.value.route_table_id
+  route_table_id = var.subnets[each.key].route_table_id
 }
 
 data "azurerm_network_watcher" "nwatcher" {
