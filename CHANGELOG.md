@@ -1,3 +1,28 @@
+# [3.0.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.6.0...3.0.0) (2023-04-28)
+
+
+### Features
+
+* add route property ([76c29ff](https://github.com/longviewsystems/terraform-azurerm-network/commit/76c29ff81c19a5223af15bbe2cc4d4f7853deb69))
+* fixed errors ([531acc3](https://github.com/longviewsystems/terraform-azurerm-network/commit/531acc3add1ac004f89174f8a74ee12316fc8ad3))
+* fixed latest errors ([8b3d762](https://github.com/longviewsystems/terraform-azurerm-network/commit/8b3d76223d8b2a283d7b72f33f3aaa53433cbd3b))
+* fixed recent errors ([a1959c3](https://github.com/longviewsystems/terraform-azurerm-network/commit/a1959c30f6433f8b685195c1384733635ded66c2))
+* fixed recent errors ([044f8b2](https://github.com/longviewsystems/terraform-azurerm-network/commit/044f8b2edd6cd7f38842a7b6fa69ce07a45031d3))
+* fixed recent errors ([29b4050](https://github.com/longviewsystems/terraform-azurerm-network/commit/29b4050e78b9ecf135f26e571effb9b6104c4159))
+* fixed recent errors ([0f4f64f](https://github.com/longviewsystems/terraform-azurerm-network/commit/0f4f64f4530f9703c9f114555329f6b4cc94329a))
+* latest updates ([d678188](https://github.com/longviewsystems/terraform-azurerm-network/commit/d67818811ed014a09c7521f8d560fca8c078871b))
+* recent updates ([e3c72b3](https://github.com/longviewsystems/terraform-azurerm-network/commit/e3c72b36eb9e10dccb7fd70c04e602c4d8350250))
+* removed locals.tf ([ff3798f](https://github.com/longviewsystems/terraform-azurerm-network/commit/ff3798f9c57505ecdb2b8dde3dca2f8f1abf45c7))
+* updated locals.tf ([b24b716](https://github.com/longviewsystems/terraform-azurerm-network/commit/b24b7167075c4d542905e1875b7d7c5b17e32c47))
+* updates ([58b439c](https://github.com/longviewsystems/terraform-azurerm-network/commit/58b439cb7b95ac4cbea747a30fb81bc3955d4b48))
+* updates ([70faefa](https://github.com/longviewsystems/terraform-azurerm-network/commit/70faefa773229382450b41220a293749022abd7c))
+* updates ([e0c8a80](https://github.com/longviewsystems/terraform-azurerm-network/commit/e0c8a80935be20bdfbdbaee845ab1817ee984fd0))
+
+
+### BREAKING CHANGES
+
+* The property will break previous deployments.
+
 # [2.6.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.5.0...2.6.0) (2023-01-18)
 
 
