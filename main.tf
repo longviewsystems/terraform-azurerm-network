@@ -27,7 +27,16 @@ resource "azurerm_subnet" "snet" {
   private_endpoint_network_policies_enabled      = lookup(each.value, "private_endpoint_network_policies_enabled", null)
   service_endpoint_policy_ids                    = null
 
-
+  dynamic "delegation" {
+    for_each = lookup(each.value, "delegation", {}) != {} ? [1] : []
+    content {
+      name = lookup(each.value.delegation, "name", null)
+      service_delegation {
+        name    = lookup(each.value.delegation.service_delegation, "name", null)
+        actions = lookup(each.value.delegation.service_delegation, "actions", null)
+      }
+    }
+  }
 }
 
 #-----------------------------------------------

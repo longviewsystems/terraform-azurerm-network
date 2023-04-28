@@ -46,9 +46,19 @@ module "network_test3" {
       create_flow_logs                               = true
       nsg_name                                       = "nsg-appweb-01"
       service_endpoints                              = []
-      route_table_id                                 = null
+      route_table_id                                 = "/subscriptions/7f3c4fcf-626c-49e0-9160-a756147abaa4/resourceGroups/mod-test2-rg-pxdz/providers/Microsoft.Network/routeTables/rt-custom-02"
       add_route                                      = false
       private_endpoint_network_policies_enabled      = true
+
+      delegation = {
+        name = "delegation"
+
+        service_delegation = {
+          name    = "Microsoft.ContainerInstance/containerGroups"
+          actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+        }
+      }
+
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
