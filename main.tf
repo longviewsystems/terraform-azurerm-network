@@ -34,7 +34,6 @@ resource "azurerm_subnet" "snet" {
 #          Route Tables 
 #-----------------------------------------------
 
-#data lookup -> route id -> exists already
 
 resource "azurerm_subnet_route_table_association" "routetable" {
   for_each = {
