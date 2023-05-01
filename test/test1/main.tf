@@ -42,6 +42,15 @@ module "network_test1" {
       route_table_id                                 = null
       add_route                                      = false
       private_endpoint_network_policies_enabled      = true
+
+      delegation = {
+        name = "Microsoft.Web.serverFarms"
+        service_delegation = {
+          name    = "Microsoft.Web/serverFarms"
+          actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
+        }
+      }
+
       nsg_inbound_rules = [
         # [name, priority, direction, access, protocol, destination_port_range, source_address_prefix, destination_address_prefix]
         # To use defaults, use "" without adding any values.
