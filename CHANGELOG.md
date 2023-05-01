@@ -1,3 +1,15 @@
+# [3.1.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/3.0.1...3.1.0) (2023-05-01)
+
+
+### Bug Fixes
+
+* checking in lock files ([3887f82](https://github.com/longviewsystems/terraform-azurerm-network/commit/3887f822bd4be29431037a955c072b8d2e93e47f))
+
+
+### Features
+
+* add sn delegation support ([217a5c4](https://github.com/longviewsystems/terraform-azurerm-network/commit/217a5c4bcc4bd955b08550e0614f80ce702407c0))
+
 # [3.0.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/2.6.0...3.0.0) (2023-04-28)
 
 
