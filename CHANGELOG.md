@@ -1,3 +1,12 @@
+# [3.2.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/3.1.0...3.2.0) (2023-09-19)
+
+
+### Features
+
+* retention policy removed ([6be7ae0](https://github.com/longviewsystems/terraform-azurerm-network/commit/6be7ae0355614f2ee65484522ca93e544e30394a))
+* update diagnostic_settings retention settings ([aff27b5](https://github.com/longviewsystems/terraform-azurerm-network/commit/aff27b590a8d2cbca715c185903e518c962c9326))
+* update provider used in tests ([4843c7a](https://github.com/longviewsystems/terraform-azurerm-network/commit/4843c7afeffd2689ccd78c6307ea6d5c0652f04b))
+
 # [3.1.0](https://github.com/longviewsystems/terraform-azurerm-network/compare/3.0.1...3.1.0) (2023-05-01)
 
 
