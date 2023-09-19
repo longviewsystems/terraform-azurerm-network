@@ -34,7 +34,6 @@ variable "diagnostic_settings" {
     storage_account_id         = string
     log_analytics_workspace_id = string
     nsg_diag_logs              = list(string)
-    retention_policy           = number
   })
   description = "Configures Azure Monitor Diagnostic settings for resources in this module.  Toggle feature with diagnostics_enabled (true or false).  Set other values to null to disable."
   default = {
@@ -42,7 +41,6 @@ variable "diagnostic_settings" {
     storage_account_id         = null
     log_analytics_workspace_id = null
     nsg_diag_logs              = ["NetworkSecurityGroupEvent", "NetworkSecurityGroupRuleCounter"]
-    retention_policy           = 90
   }
 }
 
